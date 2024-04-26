@@ -1,0 +1,46 @@
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\bin\Debug\Gradostroy.exe.config
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\bin\Debug\Gradostroy.exe
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\bin\Debug\Gradostroy.pdb
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.AssemblyReference.cache
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\MainWindow.g.cs
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\App.g.cs
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy_MarkupCompile.cache
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy_MarkupCompile.lref
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\MainWindow.baml
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.g.resources
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.Properties.Resources.resources
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.GenerateResource.cache
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.CoreCompileInputs.cache
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.exe
+C:\Users\у\Desktop\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.pdb
+C:\Users\у\Desktop\Gradostroy\Gradostroy\bin\Debug\Gradostroy.exe.config
+C:\Users\у\Desktop\Gradostroy\Gradostroy\bin\Debug\Gradostroy.exe
+C:\Users\у\Desktop\Gradostroy\Gradostroy\bin\Debug\Gradostroy.pdb
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.AssemblyReference.cache
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\MainWindow.g.cs
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\App.g.cs
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy_MarkupCompile.cache
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy_MarkupCompile.lref
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\MainWindow.baml
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.g.resources
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.Properties.Resources.resources
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.GenerateResource.cache
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.CoreCompileInputs.cache
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.exe
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.pdb
+C:\Users\у\Desktop\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.SuggestedBindingRedirects.cache
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\bin\Debug\Gradostroy.exe.config
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\bin\Debug\Gradostroy.exe
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\bin\Debug\Gradostroy.pdb
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.AssemblyReference.cache
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\MainWindow.g.cs
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\App.g.cs
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy_MarkupCompile.cache
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy_MarkupCompile.lref
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\MainWindow.baml
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.g.resources
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.Properties.Resources.resources
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.GenerateResource.cache
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.csproj.CoreCompileInputs.cache
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.exe
+C:\Users\valer\OneDrive\Рабочий стол\edg\Gradostroy\Gradostroy\obj\Debug\Gradostroy.pdb
