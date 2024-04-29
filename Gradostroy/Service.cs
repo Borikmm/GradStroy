@@ -17,17 +17,49 @@ namespace Gradostroy
     /// </summary>
     public class Service
     {
-        public int Balance;
+        #region Service Singleton
+        private static Service instance;
+        public static Service Instance
+        {
+            get
+            {
+                // Если экземпляр еще не создан, создаем его
+                if (instance == null)
+                {
+                    instance = new Service();
+                }
+                return instance;
+            }
+        }
+        #endregion
 
+        #region Service Main_game_parametres
+
+        public int Balance;
         Dictionary<string, Main_block> blocks;
 
-        Day_cycle day_cycle_manager;
-
-        public Service(Dictionary<string, Main_block> blocks)
+        /// <summary>
+        /// Main game settings, contains importain info for all classes
+        /// </summary>
+        public static readonly Dictionary<string, object> Game_Settings = new Dictionary<string, object>()
         {
-            this.Balance = Convert.ToInt16(blocks["Balance_block"].Text);
-            this.blocks = blocks;
+            { "Cycle_time", 120},
+            { "Update_on_hour", 30}, // fps update night overlay on one hour
+            { "Main_loop_FPS", 30}, // main loop fps
+        };
 
+        #endregion
+
+        #region Service Classes_for_game_management
+
+        Day_cycle day_cycle_manager;
+        public static Game_main_timers main_timers;
+
+        #endregion
+
+
+        Service()
+        {
             MainWindow.Abuild_or_destroy += Change_Balance;
             MainWindow.Acheck_balance += Check_Balance;
             MainWindow.AEarn_money += Change_Balance;
@@ -66,8 +98,12 @@ namespace Gradostroy
         }
 
 
-        public void Start_setter()
+        public void Start_setter(Dictionary<string, Main_block> blocks)
         {
+            this.blocks = blocks;
+
+            this.Balance = Convert.ToInt16(blocks["Balance_block"].Text);
+
             foreach (Main_block setting in blocks.Values)
             {
                 if (setting.reverse_spliter)
@@ -82,9 +118,27 @@ namespace Gradostroy
             day_cycle_manager = new Day_cycle(cycle_time, Update_on_hour, day_night_relationship, Night_Overlay);
             day_cycle_manager.Start_day_cycle();
         }
+
+
+        public void Start_all_timers()
+        {
+            main_timers = new Game_main_timers();
+            main_timers.Start_timers();
+        }
     }
 
+    public class Game_main_timers
+    {
+        // Mining
+        public MyTimer Mining_timer = new MyTimer(tick:0.1);
 
+        public void Start_timers()
+        {
+            Mining_timer.Start();
+        }
+
+
+    }
 
     public class Day_cycle
     {
@@ -115,6 +169,7 @@ namespace Gradostroy
 
             this.Night_Overlay = Night_Overlay;
 
+            // this parametr dosnt working yet.....
             this.day_night_relationship = day_night_relationship;
         }
 

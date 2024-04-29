@@ -21,17 +21,15 @@ namespace Gradostroy
     /// </summary>
     public partial class MainWindow : Window
     {
-        // margin top panel for buildings
+        // buildings list
         private Dictionary<string, Building> Buildings_list = new Dictionary<string, Building>();
 
         // Need parametres for building
-        private Building cursor_building;
-        private string cursor_fillen;
+        private string cursor_fillen; //type action selected in menu
         private string type_build_selected;
 
         // Main loop cycle
         private DispatcherTimer Main_loop;
-        private float Main_loop_timer = 1f;
 
         // In window
         public static Action<int> Abuild_or_destroy;
@@ -42,6 +40,10 @@ namespace Gradostroy
 
         // Action main loop
         public static Action AFixedUpdate;
+
+
+        // Create service for working with balance, blocks and other game management
+        Service service = Service.Instance; 
 
         public MainWindow()
         {
@@ -56,14 +58,18 @@ namespace Gradostroy
                 {"Time_block" , new Main_block("Time_block", "6", ":00", Time_block, true) },
             };
 
-            // Create service for working with balance, blocks and other game management
-            Service service = new Service(blocks);
-
             // Set block text and other Game manager atributes
-            service.Start_setter();
+            service.Start_setter(blocks);
 
             // Start day night switch
-            service.Start_day_cycle(10, 30, new Tuple<int, int>(70, 30), Night_overlay);
+            service.Start_day_cycle(
+                cycle_time: Convert.ToInt16(Service.Game_Settings["Cycle_time"]), 
+                Update_on_hour: Convert.ToInt16(Service.Game_Settings["Update_on_hour"]), 
+                day_night_relationship:new Tuple<int, int>(70, 30),  // doesnt working
+                Night_Overlay:Night_overlay
+                );
+
+            service.Start_all_timers();
 
             // Set start main window parametres 
             Main_window_setter();
@@ -76,7 +82,7 @@ namespace Gradostroy
         {
             // Main loop settings
             Main_loop = new DispatcherTimer();
-            Main_loop.Interval = TimeSpan.FromSeconds(Main_loop_timer);
+            Main_loop.Interval = TimeSpan.FromSeconds(Convert.ToDouble(Service.Game_Settings["Main_loop_FPS"]) / 100);
             Main_loop.Tick += FixedUpdate;
         }
 
