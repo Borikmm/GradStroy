@@ -40,6 +40,8 @@
             <TextBlock x:Name="Devel_block" Text="By " VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Right" FontSize="20" Foreground="#FF3D2FEF"></TextBlock>
         </StackPanel>
 
+        <TextBlock x:Name="no_money_notification" Grid.Row="0" Text="No money!" HorizontalAlignment="Center" Opacity="1" Foreground="Red" Panel.ZIndex="1000"></TextBlock>
+
         <Canvas x:Name="Main_canvas" MouseDown="Main_canvas_MouseDown" Grid.Row="1"  Background="White" Panel.ZIndex="-10">
         </Canvas>
 

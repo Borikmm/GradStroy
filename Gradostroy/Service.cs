@@ -43,7 +43,7 @@ namespace Gradostroy
         /// </summary>
         public static readonly Dictionary<string, object> Game_Settings = new Dictionary<string, object>()
         {
-            { "Cycle_time", 120},
+            { "Cycle_time", 120}, // day - night cycle
             { "Update_on_hour", 30}, // fps update night overlay on one hour
             { "Main_loop_FPS", 30}, // main loop fps
         };
@@ -129,8 +129,15 @@ namespace Gradostroy
 
     public class Game_main_timers
     {
+
+        private static Dictionary<string, int> timers_ticks = new Dictionary<string, int>()
+        {
+            {"Mining_timer", 1},
+        };
+
+
         // Mining
-        public MyTimer Mining_timer = new MyTimer(tick:0.1);
+        public MyTimer Mining_timer = new MyTimer(tick: timers_ticks["Mining_timer"]);
 
         public void Start_timers()
         {

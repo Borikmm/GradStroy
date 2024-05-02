@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -43,7 +46,12 @@ namespace Gradostroy
 
 
         // Create service for working with balance, blocks and other game management
-        Service service = Service.Instance; 
+        Service service = Service.Instance;
+
+
+        // Notification no money
+        private System.Timers.Timer notification_lost_timer;
+        private bool notification_anim_start = false;
 
         public MainWindow()
         {
@@ -54,7 +62,7 @@ namespace Gradostroy
             {
                 {"Version_block" , new Main_block("Version_block", "0.2", "Version: ", Version_block) },
                 {"Devel_block" , new Main_block("Devel_block", "Borikmm", "By: ", Devel_block) },
-                {"Balance_block" , new Main_block("Balance_block", "10000", "Balance: ", Balance_block) },
+                {"Balance_block" , new Main_block("Balance_block", "10", "Balance: ", Balance_block) },
                 {"Time_block" , new Main_block("Time_block", "6", ":00", Time_block, true) },
             };
 
@@ -108,7 +116,6 @@ namespace Gradostroy
 
         private Building Create_build(string type_build)
         {
-            
             Building cursor_building_ = null;
             switch (type_build)
             {
@@ -181,11 +188,13 @@ namespace Gradostroy
         {
             var build = Create_build(type_build_selected);
 
-
             if ((bool)(Acheck_balance?.Invoke(build.Cost)))
             {
+                StartAnimation();
                 return;
             }
+
+            build.Start_fixed_update();
 
             var Building = build.Build(x, y);
 
@@ -207,5 +216,50 @@ namespace Gradostroy
         {
             cursor_fillen = ((MenuItem)sender).Header.ToString();
         }
+
+
+
+        // Notification about not money
+        private void StartAnimation()
+        {
+
+            if (notification_anim_start)
+                return;
+
+            int timer_notification_lost = 2000;
+
+
+            notification_lost_timer = new System.Timers.Timer(timer_notification_lost); // Устанавливаем интервал таймера в 2 секунды
+            notification_lost_timer.Elapsed += LostAnimation;
+
+            DoubleAnimation fadeInAnimation = new DoubleAnimation();
+            fadeInAnimation.From = 0;
+            fadeInAnimation.To = 1;
+            fadeInAnimation.Duration = TimeSpan.FromSeconds(1);
+
+
+            no_money_notification.BeginAnimation(TextBlock.OpacityProperty, fadeInAnimation);
+
+            notification_lost_timer.Start();
+
+            notification_anim_start = true;
+        }
+
+        private void LostAnimation(object sender, ElapsedEventArgs e)
+        {
+            notification_lost_timer.Stop();
+            notification_anim_start = false;
+
+            Dispatcher.Invoke(() =>
+            {
+                DoubleAnimation fadeOutAnimation = new DoubleAnimation();
+                fadeOutAnimation.From = 1;
+                fadeOutAnimation.To = 0;
+                fadeOutAnimation.Duration = TimeSpan.FromSeconds(1);
+
+                no_money_notification.BeginAnimation(TextBlock.OpacityProperty, fadeOutAnimation);
+            });
+        }
+
     }
 }

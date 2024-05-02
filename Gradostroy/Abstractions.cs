@@ -49,9 +49,14 @@ namespace Gradostroy
             _XP -= damage_value;
         }
 
-        public void Destroy()
+        public virtual void Destroy()
         {
-            throw new NotImplementedException();
+            
+        }
+
+        public virtual void Start_fixed_update()
+        {
+            
         }
     }
 

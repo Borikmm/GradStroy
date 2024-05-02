@@ -18,12 +18,14 @@ namespace Gradostroy
 
         public Cube()
         {
-            // Subscribe for mining timer
-            Service.main_timers.Mining_timer.action += FixedUpdate;
-
             Name = "Cube";
             Cost = 10;
             Sell_Cost = -5;
+        }
+
+        public override void Start_fixed_update()
+        {
+
         }
 
 
@@ -66,9 +68,6 @@ namespace Gradostroy
 
         public House()
         {
-            // Subscribe for mining timer
-            Service.main_timers.Mining_timer.action += FixedUpdate;
-
             Name = "House";
             Cost = 20;
             Sell_Cost = -10;
@@ -77,6 +76,12 @@ namespace Gradostroy
         ~House()
         {
             Service.main_timers.Mining_timer.action -= FixedUpdate;
+        }
+
+        public override void Start_fixed_update()
+        {
+            // Subscribe for mining timer
+            Service.main_timers.Mining_timer.action += FixedUpdate;
         }
 
         public override void UnSub()
