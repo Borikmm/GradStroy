@@ -62,28 +62,34 @@ namespace Gradostroy
             {
                 {"Version_block" , new Main_block("Version_block", "0.2", "Version: ", Version_block) },
                 {"Devel_block" , new Main_block("Devel_block", "Borikmm", "By: ", Devel_block) },
-                {"Balance_block" , new Main_block("Balance_block", "10", "Balance: ", Balance_block) },
+                {"Balance_block" , new Main_block("Balance_block", "100", "Balance: ", Balance_block) },
                 {"Time_block" , new Main_block("Time_block", "6", ":00", Time_block, true) },
             };
 
             // Set block text and other Game manager atributes
-            service.Start_setter(blocks);
+            service.Start_Block_service(blocks);
 
             // Start day night switch
-            service.Start_day_cycle(
+            service.Start_day_cycle_service(
                 cycle_time: Convert.ToInt16(Service.Game_Settings["Cycle_time"]), 
                 Update_on_hour: Convert.ToInt16(Service.Game_Settings["Update_on_hour"]), 
                 day_night_relationship:new Tuple<int, int>(70, 30),  // doesnt working
                 Night_Overlay:Night_overlay
                 );
 
-            service.Start_all_timers();
+            service.Start_all_timers_service();
 
             // Set start main window parametres 
             Main_window_setter();
 
             // Start Main loop
             Main_loop.Start();
+
+
+            // Statistic
+            // Подписываемся на событие изменения состояния окна
+            this.StateChanged += MainWindow_StateChanged;
+
         }
 
         private void Main_window_setter()
@@ -97,6 +103,24 @@ namespace Gradostroy
         private void FixedUpdate(object sender, EventArgs e)
         {
             AFixedUpdate?.Invoke();
+        }
+
+
+
+
+        private void MainWindow_StateChanged(object sender, EventArgs e)
+        {
+            // Проверяем, является ли текущее состояние окна полноэкранным
+            if (this.WindowState == WindowState.Maximized)
+            {
+                // Вызываем нужную функцию
+                YourFunctionName();
+            }
+        }
+
+        private void YourFunctionName()
+        {
+           test.Visibility = Visibility.Visible;
         }
 
 

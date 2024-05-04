@@ -33,6 +33,8 @@
             <Border  BorderBrush="Aqua" BorderThickness="5" Grid.RowSpan="2"/>
             <TextBlock x:Name="Balance_block" Text="$: " VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
             <TextBlock x:Name="Time_block" Text="$: " VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
+            <TextBlock x:Name="no_money_notification" Grid.Row="0" Text="No money!" HorizontalAlignment="Center" Opacity="0" Foreground="Red" Panel.ZIndex="1000"></TextBlock>
+            <TextBlock x:Name="test" Grid.Row="0" Text="Test" HorizontalAlignment="Center" Opacity="1" Foreground="Red" Panel.ZIndex="1000" Visibility="Hidden"></TextBlock>
         </Grid>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Panel.ZIndex="101" x:Name="Addition_Info_panel">
@@ -40,7 +42,6 @@
             <TextBlock x:Name="Devel_block" Text="By " VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Right" FontSize="20" Foreground="#FF3D2FEF"></TextBlock>
         </StackPanel>
 
-        <TextBlock x:Name="no_money_notification" Grid.Row="0" Text="No money!" HorizontalAlignment="Center" Opacity="1" Foreground="Red" Panel.ZIndex="1000"></TextBlock>
 
         <Canvas x:Name="Main_canvas" MouseDown="Main_canvas_MouseDown" Grid.Row="1"  Background="White" Panel.ZIndex="-10">
         </Canvas>

@@ -13,7 +13,7 @@ using System.Windows.Threading;
 namespace Gradostroy
 {
     /// <summary>
-    /// Class for game management. Set start values to need blocks
+    /// Class for game control to main mechanics classes. Set start values to need blocks
     /// </summary>
     public class Service
     {
@@ -35,8 +35,6 @@ namespace Gradostroy
 
         #region Service Main_game_parametres
 
-        public int Balance;
-        Dictionary<string, Main_block> blocks;
 
         /// <summary>
         /// Main game settings, contains importain info for all classes
@@ -52,59 +50,83 @@ namespace Gradostroy
 
         #region Service Classes_for_game_management
 
-        Day_cycle day_cycle_manager;
-        public static Game_main_timers main_timers;
+        Day_cycle_service _day_cycle_manager;
+        Balance_service _balance_service;
+        Blocks_service _blocks_service;
+        public static Game_main_timers_service main_timers;
 
         #endregion
 
 
-        Service()
+        Service() 
         {
-            MainWindow.Abuild_or_destroy += Change_Balance;
-            MainWindow.Acheck_balance += Check_Balance;
-            MainWindow.AEarn_money += Change_Balance;
-
-            Day_cycle.ATimeChanged += Change_time;
-
+            _balance_service = new Balance_service();
         }
 
         ~Service()
         {
-            MainWindow.Abuild_or_destroy -= Change_Balance;
-            MainWindow.Acheck_balance -= Check_Balance;
-            MainWindow.AEarn_money -= Change_Balance;
-
-            Day_cycle.ATimeChanged -= Change_time;
+            
         }
 
-
-        private bool Check_Balance(int cost)
+        public void Start_Block_service(Dictionary<string, Main_block> blocks)
         {
-            if (this.Balance < cost)
-                return true;
-            else return false;
+            _blocks_service = new Blocks_service(blocks);
+            _blocks_service.Start_setter();
+
+            // Send balance to balance service from given blocks
+            _balance_service.Set_balance(Convert.ToInt32(blocks["Balance_block"].Text));
         }
 
-        private void Change_Balance(int number)
-        { 
-            this.Balance -= number;
-
-            blocks["Balance_block"].link.Text = blocks["Balance_block"].Spliter + " " + this.Balance.ToString();
-        }
-
-        private void Change_time(int time)
+        public void Start_day_cycle_service(int cycle_time, int Update_on_hour, Tuple<int, int> day_night_relationship, Canvas Night_Overlay)
         {
-            blocks["Time_block"].link.Text = time.ToString() + " " + blocks["Time_block"].Spliter;
+            _day_cycle_manager = new Day_cycle_service(cycle_time, Update_on_hour, day_night_relationship, Night_Overlay);
+            _day_cycle_manager.Start_day_cycle();
         }
 
 
-        public void Start_setter(Dictionary<string, Main_block> blocks)
+        public void Start_all_timers_service()
         {
-            this.blocks = blocks;
+            main_timers = new Game_main_timers_service();
+            main_timers.Start_timers();
+        }
+    }
 
-            this.Balance = Convert.ToInt16(blocks["Balance_block"].Text);
 
-            foreach (Main_block setting in blocks.Values)
+    public class Blocks_service
+    {
+
+        private Dictionary<string, Main_block> _blocks;
+
+
+        public Blocks_service(Dictionary<string, Main_block> blocks) 
+        {
+            Balance_service.AUpdate_balance += Update_balance_block;
+            Day_cycle_service.ATimeChanged += Change_time_block;
+
+            _blocks = blocks;
+        }
+
+        ~Blocks_service()
+        {
+            Balance_service.AUpdate_balance -= Update_balance_block;
+            Day_cycle_service.ATimeChanged -= Change_time_block;
+        }
+
+
+        private void Change_time_block(int time)
+        {
+            _blocks["Time_block"].link.Text = time.ToString() + " " + _blocks["Time_block"].Spliter;
+        }
+
+        private void Update_balance_block(int balance)
+        {
+            _blocks["Balance_block"].link.Text = _blocks["Balance_block"].Spliter + " " + balance.ToString();
+        }
+
+
+        public void Start_setter()
+        {
+            foreach (Main_block setting in _blocks.Values)
             {
                 if (setting.reverse_spliter)
                     setting.link.Text = setting.Text + " " + setting.Spliter;
@@ -113,21 +135,9 @@ namespace Gradostroy
             }
         }
 
-        public void Start_day_cycle(int cycle_time, int Update_on_hour, Tuple<int, int> day_night_relationship, Canvas Night_Overlay)
-        {
-            day_cycle_manager = new Day_cycle(cycle_time, Update_on_hour, day_night_relationship, Night_Overlay);
-            day_cycle_manager.Start_day_cycle();
-        }
-
-
-        public void Start_all_timers()
-        {
-            main_timers = new Game_main_timers();
-            main_timers.Start_timers();
-        }
     }
 
-    public class Game_main_timers
+    public class Game_main_timers_service
     {
 
         private static Dictionary<string, int> timers_ticks = new Dictionary<string, int>()
@@ -147,7 +157,7 @@ namespace Gradostroy
 
     }
 
-    public class Day_cycle
+    public class Day_cycle_service
     {
         DispatcherTimer Day_cycle_timer;
         DispatcherTimer Hour_timer;
@@ -160,7 +170,7 @@ namespace Gradostroy
 
         public static Action<int> ATimeChanged;
 
-        public Day_cycle(double cycle_time, int Update_on_hour, Tuple<int, int> day_night_relationship, Canvas Night_Overlay)
+        public Day_cycle_service(double cycle_time, int Update_on_hour, Tuple<int, int> day_night_relationship, Canvas Night_Overlay)
         {
             // Hour Timer setter
             Hour_timer = new DispatcherTimer();
@@ -245,4 +255,48 @@ namespace Gradostroy
             Day_cycle_timer.Start();
         }
     }
+
+    public class Balance_service
+    {
+        private int _balance;
+
+        // For balance block update in service
+        public static Action<int> AUpdate_balance { get; set; }
+
+        public Balance_service()
+        {
+
+
+            MainWindow.Abuild_or_destroy += Change_Balance;
+            MainWindow.Acheck_balance += Check_Balance;
+            MainWindow.AEarn_money += Change_Balance;
+        }
+
+        ~Balance_service()
+        {
+            MainWindow.Abuild_or_destroy -= Change_Balance;
+            MainWindow.Acheck_balance -= Check_Balance;
+            MainWindow.AEarn_money -= Change_Balance;
+        }
+
+        public void Set_balance(int balance)
+        {
+            _balance = balance;
+        }
+
+        private bool Check_Balance(int cost)
+        {
+            if (_balance < cost)
+                return true;
+            else return false;
+        }
+
+        private void Change_Balance(int number)
+        {
+            _balance -= number;
+            AUpdate_balance?.Invoke(_balance);
+        }
+
+    }
+
 }
