@@ -31,8 +31,7 @@ namespace Gradostroy
         private string cursor_fillen; //type action selected in menu
         private string type_build_selected;
 
-        // Main loop cycle
-        private DispatcherTimer Main_loop;
+
 
         // In window
         public static Action<int> Abuild_or_destroy;
@@ -40,10 +39,6 @@ namespace Gradostroy
 
         // In Building
         public static Action<int> AEarn_money;
-
-        // Action main loop
-        public static Action AFixedUpdate;
-
 
         // Create service for working with balance, blocks and other game management
         Service service = Service.Instance;
@@ -57,16 +52,16 @@ namespace Gradostroy
         {
             InitializeComponent();
 
-
+            // Set block text and start it
             Dictionary<string, Main_block> blocks = new Dictionary<string, Main_block>()
             {
                 {"Version_block" , new Main_block("Version_block", "0.2", "Version: ", Version_block) },
                 {"Devel_block" , new Main_block("Devel_block", "Borikmm", "By: ", Devel_block) },
                 {"Balance_block" , new Main_block("Balance_block", "100", "Balance: ", Balance_block) },
                 {"Time_block" , new Main_block("Time_block", "6", ":00", Time_block, true) },
+                {"Col_buildings_block" , new Main_block("Col_buildings_bloc", "0", "buildings: ", Col_buildings) }, // need doing with EventHandler
             };
-
-            // Set block text and other Game manager atributes
+            
             service.Start_Block_service(blocks);
 
             // Start day night switch
@@ -79,51 +74,12 @@ namespace Gradostroy
 
             service.Start_all_timers_service();
 
-            // Set start main window parametres 
-            Main_window_setter();
+            service.Start_Main_loop();
 
-            // Start Main loop
-            Main_loop.Start();
-
-
-            // Statistic
-            // Подписываемся на событие изменения состояния окна
-            this.StateChanged += MainWindow_StateChanged;
+            service.Start_statistic_mech(Statistic_block, this);
+            
 
         }
-
-        private void Main_window_setter()
-        {
-            // Main loop settings
-            Main_loop = new DispatcherTimer();
-            Main_loop.Interval = TimeSpan.FromSeconds(Convert.ToDouble(Service.Game_Settings["Main_loop_FPS"]) / 100);
-            Main_loop.Tick += FixedUpdate;
-        }
-
-        private void FixedUpdate(object sender, EventArgs e)
-        {
-            AFixedUpdate?.Invoke();
-        }
-
-
-
-
-        private void MainWindow_StateChanged(object sender, EventArgs e)
-        {
-            // Проверяем, является ли текущее состояние окна полноэкранным
-            if (this.WindowState == WindowState.Maximized)
-            {
-                // Вызываем нужную функцию
-                YourFunctionName();
-            }
-        }
-
-        private void YourFunctionName()
-        {
-           test.Visibility = Visibility.Visible;
-        }
-
-
 
         private void Building_house(object sender, RoutedEventArgs e)
         {

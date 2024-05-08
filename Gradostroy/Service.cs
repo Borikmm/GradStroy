@@ -1,4 +1,5 @@
-﻿using Gradostroy.Properties;
+﻿using Gradostroy.Main_mechanics;
+using Gradostroy.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +14,7 @@ using System.Windows.Threading;
 namespace Gradostroy
 {
     /// <summary>
-    /// Class for game control to main mechanics classes. Set start values to need blocks
+    /// Class for control to main mechanics classes.
     /// </summary>
     public class Service
     {
@@ -53,19 +54,40 @@ namespace Gradostroy
         Day_cycle_service _day_cycle_manager;
         Balance_service _balance_service;
         Blocks_service _blocks_service;
-        public static Game_main_timers_service main_timers;
+
+        public static Main_loop main_loop;
+        public static Game_main_timers_service main_timers; // public and static for access from all programm space
+        public static Statistic_mech notification;
 
         #endregion
 
 
         Service() 
         {
-            _balance_service = new Balance_service();
+            Start_balance_service();
         }
 
         ~Service()
         {
             
+        }
+
+        
+
+        private void Start_balance_service()
+        {
+            _balance_service = new Balance_service();
+        }
+
+        public void Start_statistic_mech(Grid textBlock, object win)
+        {
+            notification = new Statistic_mech(textBlock, win);
+        }
+
+        public void Start_Main_loop()
+        {
+            main_loop = new Main_loop();
+            main_loop.Start_loop();
         }
 
         public void Start_Block_service(Dictionary<string, Main_block> blocks)
@@ -91,7 +113,9 @@ namespace Gradostroy
         }
     }
 
-
+    /// <summary>
+    /// Class for text blocks working. 
+    /// </summary>
     public class Blocks_service
     {
 
@@ -137,6 +161,9 @@ namespace Gradostroy
 
     }
 
+    /// <summary>
+    /// Class for all timers working. For working need write new MyTimer instance
+    /// </summary>
     public class Game_main_timers_service
     {
 
@@ -260,7 +287,7 @@ namespace Gradostroy
     {
         private int _balance;
 
-        // For balance block update in service
+        // For balance block update in Blocks_service
         public static Action<int> AUpdate_balance { get; set; }
 
         public Balance_service()
