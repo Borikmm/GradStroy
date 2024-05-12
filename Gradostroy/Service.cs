@@ -54,10 +54,14 @@ namespace Gradostroy
         Day_cycle_service _day_cycle_manager;
         Balance_service _balance_service;
         Blocks_service _blocks_service;
+        Statistic_mech _statistic;
+        Build_mechanic _build_Mechanic;
+        Notification_mech _not_mech;
+
 
         public static Main_loop main_loop;
         public static Game_main_timers_service main_timers; // public and static for access from all programm space
-        public static Statistic_mech notification;
+
 
         #endregion
 
@@ -72,8 +76,6 @@ namespace Gradostroy
             
         }
 
-        
-
         private void Start_balance_service()
         {
             _balance_service = new Balance_service();
@@ -81,7 +83,7 @@ namespace Gradostroy
 
         public void Start_statistic_mech(Grid textBlock, object win)
         {
-            notification = new Statistic_mech(textBlock, win);
+            _statistic = new Statistic_mech(textBlock, win);
         }
 
         public void Start_Main_loop()
@@ -111,6 +113,18 @@ namespace Gradostroy
             main_timers = new Game_main_timers_service();
             main_timers.Start_timers();
         }
+
+        public void Start_build_mechanic()
+        {
+            _build_Mechanic = new Build_mechanic();
+        }
+
+        public void Start_notification_mech(TextBlock block, object win)
+        {
+            _not_mech = new Notification_mech(block, win);
+        }
+
+
     }
 
     /// <summary>
@@ -119,15 +133,19 @@ namespace Gradostroy
     public class Blocks_service
     {
 
-        private Dictionary<string, Main_block> _blocks;
+        public static Dictionary<string, Main_block> blocks;
+
+        public static Action<string> AUpdateStatisticBlock;
 
 
-        public Blocks_service(Dictionary<string, Main_block> blocks) 
+        public Blocks_service(Dictionary<string, Main_block> blocks_) 
         {
             Balance_service.AUpdate_balance += Update_balance_block;
             Day_cycle_service.ATimeChanged += Change_time_block;
 
-            _blocks = blocks;
+            blocks = blocks_;
+
+            AUpdateStatisticBlock += Update_statistic_block;
         }
 
         ~Blocks_service()
@@ -139,18 +157,34 @@ namespace Gradostroy
 
         private void Change_time_block(int time)
         {
-            _blocks["Time_block"].link.Text = time.ToString() + " " + _blocks["Time_block"].Spliter;
+            blocks["Time_block"].link.Text = time.ToString() + " " + blocks["Time_block"].Spliter;
         }
 
         private void Update_balance_block(int balance)
         {
-            _blocks["Balance_block"].link.Text = _blocks["Balance_block"].Spliter + " " + balance.ToString();
+            blocks["Balance_block"].link.Text = blocks["Balance_block"].Spliter + " " + balance.ToString();
+        }
+
+        private void Update_statistic_block(string name) // increment
+        {
+            switch (name)
+            {
+                case "Destroy":
+                    blocks["Col_buildings_block"].Text = (Convert.ToInt16(Blocks_service.blocks["Col_buildings_block"].Text) - 1).ToString();
+                    blocks["Col_buildings_block"].link.Text = blocks["Col_buildings_block"].Spliter + blocks["Col_buildings_block"].Text;
+                    break;
+                case "House":
+                    blocks["Col_buildings_block"].Text = (Convert.ToInt16(Blocks_service.blocks["Col_buildings_block"].Text) + 1).ToString();
+                    blocks["Col_buildings_block"].link.Text = blocks["Col_buildings_block"].Spliter + blocks["Col_buildings_block"].Text;
+                    break;
+            }
+        
         }
 
 
         public void Start_setter()
         {
-            foreach (Main_block setting in _blocks.Values)
+            foreach (Main_block setting in blocks.Values)
             {
                 if (setting.reverse_spliter)
                     setting.link.Text = setting.Text + " " + setting.Spliter;
@@ -292,8 +326,6 @@ namespace Gradostroy
 
         public Balance_service()
         {
-
-
             MainWindow.Abuild_or_destroy += Change_Balance;
             MainWindow.Acheck_balance += Check_Balance;
             MainWindow.AEarn_money += Change_Balance;

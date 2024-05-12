@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gradostroy.Main_mechanics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace Gradostroy
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Building build_params
         // buildings list
         private Dictionary<string, Building> Buildings_list = new Dictionary<string, Building>();
 
@@ -31,22 +33,16 @@ namespace Gradostroy
         private string cursor_fillen; //type action selected in menu
         private string type_build_selected;
 
-
-
         // In window
         public static Action<int> Abuild_or_destroy;
         public static Func<int, bool> Acheck_balance;
 
         // In Building
         public static Action<int> AEarn_money;
+        #endregion
 
-        // Create service for working with balance, blocks and other game management
+        // Create service for working with balance, blocks and other game mechanics
         Service service = Service.Instance;
-
-
-        // Notification no money
-        private System.Timers.Timer notification_lost_timer;
-        private bool notification_anim_start = false;
 
         public MainWindow()
         {
@@ -59,6 +55,8 @@ namespace Gradostroy
                 {"Devel_block" , new Main_block("Devel_block", "Borikmm", "By: ", Devel_block) },
                 {"Balance_block" , new Main_block("Balance_block", "100", "Balance: ", Balance_block) },
                 {"Time_block" , new Main_block("Time_block", "6", ":00", Time_block, true) },
+
+                // statistic blocks
                 {"Col_buildings_block" , new Main_block("Col_buildings_bloc", "0", "buildings: ", Col_buildings) }, // need doing with EventHandler
             };
             
@@ -77,8 +75,8 @@ namespace Gradostroy
             service.Start_Main_loop();
 
             service.Start_statistic_mech(Statistic_block, this);
-            
 
+            service.Start_notification_mech(no_money_notification, this);
         }
 
         private void Building_house(object sender, RoutedEventArgs e)
@@ -134,7 +132,10 @@ namespace Gradostroy
                     break;
                 case "Destroy":
                     if (building != null)
+                    {
+                        Statistic_mech.Achange_statistic?.Invoke(cursor_fillen); // change statistic
                         Destroy_build(building);
+                    }
                     break;
                 case "info":
                     break;
@@ -170,7 +171,7 @@ namespace Gradostroy
 
             if ((bool)(Acheck_balance?.Invoke(build.Cost)))
             {
-                StartAnimation();
+                Build_mechanic.ANomoney?.Invoke();
                 return;
             }
 
@@ -188,6 +189,8 @@ namespace Gradostroy
 
             Abuild_or_destroy?.Invoke(build.Cost);
 
+            Statistic_mech.Achange_statistic?.Invoke(type_build_selected); // change statistic
+
             Buildings_list.Add(Building.Name, build);
         }
 
@@ -197,49 +200,6 @@ namespace Gradostroy
             cursor_fillen = ((MenuItem)sender).Header.ToString();
         }
 
-
-
-        // Notification about not money
-        private void StartAnimation()
-        {
-
-            if (notification_anim_start)
-                return;
-
-            int timer_notification_lost = 2000;
-
-
-            notification_lost_timer = new System.Timers.Timer(timer_notification_lost); // Устанавливаем интервал таймера в 2 секунды
-            notification_lost_timer.Elapsed += LostAnimation;
-
-            DoubleAnimation fadeInAnimation = new DoubleAnimation();
-            fadeInAnimation.From = 0;
-            fadeInAnimation.To = 1;
-            fadeInAnimation.Duration = TimeSpan.FromSeconds(1);
-
-
-            no_money_notification.BeginAnimation(TextBlock.OpacityProperty, fadeInAnimation);
-
-            notification_lost_timer.Start();
-
-            notification_anim_start = true;
-        }
-
-        private void LostAnimation(object sender, ElapsedEventArgs e)
-        {
-            notification_lost_timer.Stop();
-            notification_anim_start = false;
-
-            Dispatcher.Invoke(() =>
-            {
-                DoubleAnimation fadeOutAnimation = new DoubleAnimation();
-                fadeOutAnimation.From = 1;
-                fadeOutAnimation.To = 0;
-                fadeOutAnimation.Duration = TimeSpan.FromSeconds(1);
-
-                no_money_notification.BeginAnimation(TextBlock.OpacityProperty, fadeOutAnimation);
-            });
-        }
 
     }
 }

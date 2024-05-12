@@ -1,0 +1,225 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|c:\\users\\valer\\onedrive\\\u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\gradostroy\\gradstroy\\gradostroy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\main_mechanics\\statistic_mech.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\main_mechanics\\statistic_mech.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|c:\\users\\valer\\onedrive\\\u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\gradostroy\\gradstroy\\gradostroy\\main_mechanics\\notification_mech.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\main_mechanics\\notification_mech.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\main_mechanics\\build_mechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\main_mechanics\\build_mechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\abstractions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\abstractions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\enemies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\enemies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\addition_classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\addition_classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\main_mechanics\\main_loop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\main_mechanics\\main_loop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\interfaces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\interfaces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\gradostroy\\buildings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA11D36-F88F-434D-B19E-723645A82E1D}|Gradostroy\\Gradostroy.csproj|solutionrelative:gradostroy\\buildings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Service.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Service.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Service.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Service.cs",
+              "RelativeToolTip": "Gradostroy\\Service.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAQwKoAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-29T13:36:42.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Gradostroy\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAAADsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-29T13:35:40.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Build_mechanic.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Build_mechanic.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Main_mechanics\\Build_mechanic.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Build_mechanic.cs",
+              "RelativeToolTip": "Gradostroy\\Main_mechanics\\Build_mechanic.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T10:04:56.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Addition_classes.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Addition_classes.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Addition_classes.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Addition_classes.cs",
+              "RelativeToolTip": "Gradostroy\\Addition_classes.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACMAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-29T14:30:01.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Enemies.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Enemies.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Enemies.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Enemies.cs",
+              "RelativeToolTip": "Gradostroy\\Enemies.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T13:02:19.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Abstractions.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Abstractions.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Abstractions.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Abstractions.cs",
+              "RelativeToolTip": "Gradostroy\\Abstractions.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAADwvzUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T13:02:14.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Gradostroy\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\MainWindow.xaml",
+              "RelativeToolTip": "Gradostroy\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-29T13:35:16.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Statistic_mech.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Statistic_mech.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Main_mechanics\\Statistic_mech.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Statistic_mech.cs",
+              "RelativeToolTip": "Gradostroy\\Main_mechanics\\Statistic_mech.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAawDEAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T10:39:38.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Notification_mech.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Notification_mech.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Main_mechanics\\Notification_mech.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Notification_mech.cs",
+              "RelativeToolTip": "Gradostroy\\Main_mechanics\\Notification_mech.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowBoAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T01:06:54.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Main_loop.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Main_loop.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Main_mechanics\\Main_loop.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Main_mechanics\\Main_loop.cs",
+              "RelativeToolTip": "Gradostroy\\Main_mechanics\\Main_loop.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAkwA4AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T10:26:58.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Buildings.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Buildings.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Buildings.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Buildings.cs",
+              "RelativeToolTip": "Gradostroy\\Buildings.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAAAEUAAAAJAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-29T14:37:24.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Interfaces.cs",
+              "DocumentMoniker": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Interfaces.cs",
+              "RelativeDocumentMoniker": "Gradostroy\\Interfaces.cs",
+              "ToolTip": "C:\\Users\\valer\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\edg\\Gradostroy\\GradStroy\\Gradostroy\\Interfaces.cs",
+              "RelativeToolTip": "Gradostroy\\Interfaces.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAiAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-05-02T13:01:56.614Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

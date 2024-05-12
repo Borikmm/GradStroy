@@ -62,6 +62,7 @@
     <Compile Include="Addition_classes.cs" />
     <Compile Include="Main_mechanics\Build_mechanic.cs" />
     <Compile Include="Main_mechanics\Main_loop.cs" />
+    <Compile Include="Main_mechanics\Notification_mech.cs" />
     <Compile Include="Main_mechanics\Statistic_mech.cs" />
     <Compile Include="Service.cs" />
     <Page Include="MainWindow.xaml">

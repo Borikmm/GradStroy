@@ -12,6 +12,9 @@ namespace Gradostroy.Main_mechanics
 {
     public class Statistic_mech
     {
+
+        public static Action<string> Achange_statistic;
+
         Grid _grid_statistic { get; set; }
         object _main_window;
 
@@ -20,6 +23,8 @@ namespace Gradostroy.Main_mechanics
             _grid_statistic = text_block_link;
             this._main_window = win;
             ((Window)this._main_window).StateChanged += MainWindow_StateChanged;
+
+            Achange_statistic += Change_statistic;
         }
 
         public void MainWindow_StateChanged(object sender, EventArgs e)
@@ -37,6 +42,12 @@ namespace Gradostroy.Main_mechanics
         private void Change_Visibility(bool state)
         {
             _grid_statistic.Visibility = state ? Visibility.Visible : Visibility.Hidden;
+        }
+
+
+        private void Change_statistic(string action)
+        {
+            Blocks_service.AUpdateStatisticBlock?.Invoke(action);
         }
 
     }
