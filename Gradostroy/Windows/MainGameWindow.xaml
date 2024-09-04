@@ -1,11 +1,13 @@
-﻿<Window x:Class="Gradostroy.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Gradostroy"
-        mc:Ignorable="d"
-        Title="Gradostroy" Height="450" Width="800">
+﻿<Page x:Class="Gradostroy.Windows.MainGameWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gradostroy.Windows"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainGameWindow">
+
     <Grid x:Name="Main_content">
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
@@ -13,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="Title" Grid.Row="0" Background="#FFF0F0F0">
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
@@ -39,10 +41,16 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Border  BorderBrush="Aqua" BorderThickness="5" Grid.RowSpan="2"/>
-                <TextBlock x:Name="Balance_block" Text="$: " VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
-                <TextBlock x:Name="Time_block" Text="$: " VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
-                <TextBlock x:Name="no_money_notification" Grid.Row="0" Text="No money!" HorizontalAlignment="Center" Opacity="0" Foreground="Red" Panel.ZIndex="1000"></TextBlock>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border  BorderBrush="Aqua" BorderThickness="5" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="Balance_block" Text="$: " VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
+                <TextBlock x:Name="Time_block" Text="$: " VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
+                <TextBlock x:Name="Mining_Speed_block" Text="" Grid.Row="1" HorizontalAlignment="Left" FontSize="12" Foreground="#FF020602" Margin="0 0 0 0"></TextBlock>
+                <TextBlock x:Name="no_money_notification" Grid.Row="0" Text="No money!" Grid.ColumnSpan="2" HorizontalAlignment="Center" Opacity="0" Foreground="Red" Panel.ZIndex="1000"></TextBlock>
             </Grid>
 
             <Grid x:Name="Statistic_block" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Visibility="Hidden">
@@ -54,9 +62,9 @@
                 <TextBlock x:Name="Version_block" Text="Version: " VerticalAlignment="Top"  HorizontalAlignment="Right" FontSize="20" Foreground="#FF3D2FEF"></TextBlock>
                 <TextBlock x:Name="Devel_block" Text="By " VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Right" FontSize="20" Foreground="#FF3D2FEF"></TextBlock>
             </StackPanel>
-            
+
         </Grid>
-        
+
 
 
         <Canvas x:Name="Main_canvas" MouseDown="Main_canvas_MouseDown" Grid.Row="1"  Background="White" Panel.ZIndex="-10">
@@ -66,4 +74,4 @@
         </Canvas>
 
     </Grid>
-</Window>
+</Page>

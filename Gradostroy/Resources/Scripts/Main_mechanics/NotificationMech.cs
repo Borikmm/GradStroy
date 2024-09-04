@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using System.Windows.Threading;
+
 
 namespace Gradostroy.Main_mechanics
 {
-    internal class Notification_mech
+    internal class NotificationMech
     {
 
         private System.Timers.Timer _notification_lost_timer;
@@ -20,7 +16,7 @@ namespace Gradostroy.Main_mechanics
         private object win;
 
 
-        public Notification_mech(TextBlock notification_block, object win)
+        public NotificationMech(TextBlock notification_block, object win)
         {
             _not_block = notification_block;
             Build_mechanic.ANomoney += StartAnimation;

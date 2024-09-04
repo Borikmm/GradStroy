@@ -10,8 +10,13 @@ namespace Gradostroy
 
     public interface IBuild
     {
-        Canvas Build(int x, int y);
         void Start_fixed_update();
+    }
+
+
+    public interface IRenderObject
+    {
+        Canvas Render(int x, int y);
     }
 
 

@@ -3,28 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
-namespace Gradostroy
+namespace Gradostroy.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainGameWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainGameWindow : Page
     {
+
         #region Building build_params
         // buildings list
         private Dictionary<string, Building> Buildings_list = new Dictionary<string, Building>();
@@ -41,42 +38,42 @@ namespace Gradostroy
         public static Action<int> AEarn_money;
         #endregion
 
-        // Create service for working with balance, blocks and other game mechanics
-        Service service = Service.Instance;
+        // Set block text and start it
+        public Dictionary<string, Main_block> BlocksInfo;
+        public Tuple<int, int, Canvas> DaYCycleInfo;
+        public Grid StatisticGridInfo;
+        public TextBlock NoMoneyNotificationBlock;
 
-        public MainWindow()
+        public MainGameWindow()
         {
             InitializeComponent();
+            SetGameInfo();
+        }
 
-            // Set block text and start it
-            Dictionary<string, Main_block> blocks = new Dictionary<string, Main_block>()
+        private void SetGameInfo()
+        {
+            BlocksInfo = new Dictionary<string, Main_block>()
             {
                 {"Version_block" , new Main_block("Version_block", "0.2", "Version: ", Version_block) },
                 {"Devel_block" , new Main_block("Devel_block", "Borikmm", "By: ", Devel_block) },
                 {"Balance_block" , new Main_block("Balance_block", "100", "Balance: ", Balance_block) },
                 {"Time_block" , new Main_block("Time_block", "6", ":00", Time_block, true) },
+                {"MiningSpeed_block" , new Main_block("MiningSpeed_block", "0", " in one seconds", Mining_Speed_block, true) },
 
                 // statistic blocks
                 {"Col_buildings_block" , new Main_block("Col_buildings_bloc", "0", "buildings: ", Col_buildings) }, // need doing with EventHandler
             };
-            
-            service.Start_Block_service(blocks);
 
-            // Start day night switch
-            service.Start_day_cycle_service(
-                cycle_time: Convert.ToInt16(Service.Game_Settings["Cycle_time"]), 
-                Update_on_hour: Convert.ToInt16(Service.Game_Settings["Update_on_hour"]), 
-                day_night_relationship:new Tuple<int, int>(70, 30),  // doesnt working
-                Night_Overlay:Night_overlay
-                );
 
-            service.Start_all_timers_service();
+            DaYCycleInfo = new Tuple<int, int, Canvas>(
+                Convert.ToInt16(Service.Game_Settings["Cycle_time"]),
+                Convert.ToInt16(Service.Game_Settings["Update_on_hour"]),
+                Night_overlay);
 
-            service.Start_Main_loop();
+            StatisticGridInfo = Statistic_block;
 
-            service.Start_statistic_mech(Statistic_block, this);
+            NoMoneyNotificationBlock = no_money_notification;
 
-            service.Start_notification_mech(no_money_notification, this);
         }
 
         private void Building_house(object sender, RoutedEventArgs e)
@@ -94,21 +91,17 @@ namespace Gradostroy
 
         private Building Create_build(string type_build)
         {
-            Building cursor_building_ = null;
             switch (type_build)
             {
                 case "Cube":
                     Cube cube = new Cube();
-                    cursor_building_ = cube;
-                    break;
+                    return cube;
                 case "House":
-                    
                     House house = new House();
-                    cursor_building_ = house;
-                    break;
+                    return house;
+                default: return null;
 
             }
-            return cursor_building_;
         }
 
 
@@ -133,7 +126,7 @@ namespace Gradostroy
                 case "Destroy":
                     if (building != null)
                     {
-                        Statistic_mech.Achange_statistic?.Invoke(cursor_fillen); // change statistic
+                        ActionsService.ABuildDestroyed?.Invoke(((Building)((Canvas)building).Tag));
                         Destroy_build(building);
                     }
                     break;
@@ -177,7 +170,7 @@ namespace Gradostroy
 
             build.Start_fixed_update();
 
-            var Building = build.Build(x, y);
+            var Building = build.Render(x, y);
 
             Building.MouseDown += new MouseButtonEventHandler(Building_MouseDown);
             Building.Name = build.Name + Buildings_list.Count().ToString();
@@ -186,10 +179,10 @@ namespace Gradostroy
 
             Main_content.Children.Add(Building);
 
+            // Call actions
+            Abuild_or_destroy?.Invoke(build.Cost); // For balance changes
 
-            Abuild_or_destroy?.Invoke(build.Cost);
-
-            Statistic_mech.Achange_statistic?.Invoke(type_build_selected); // change statistic
+            ActionsService.ABuildBuilded?.Invoke((Building)build);
 
             Buildings_list.Add(Building.Name, build);
         }
@@ -199,7 +192,5 @@ namespace Gradostroy
         {
             cursor_fillen = ((MenuItem)sender).Header.ToString();
         }
-
-
     }
 }

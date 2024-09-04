@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics;
+
 
 namespace Gradostroy.Main_mechanics
 {
-    public class Statistic_mech
+    public class StatisticMech
     {
 
-        public static Action<string> Achange_statistic;
+        public static Action<Building, string> Achange_statistic;
 
         Grid _grid_statistic { get; set; }
         object _main_window;
 
-        public Statistic_mech(Grid text_block_link, object win) 
+        public StatisticMech(Grid text_block_link, object win) 
         {
             _grid_statistic = text_block_link;
             this._main_window = win;
@@ -45,9 +40,9 @@ namespace Gradostroy.Main_mechanics
         }
 
 
-        private void Change_statistic(string action)
+        private void Change_statistic(Building building, string action)
         {
-            Blocks_service.AUpdateStatisticBlock?.Invoke(action);
+            Blocks_service.AUpdateStatisticBlock?.Invoke(building, action);
         }
 
     }
