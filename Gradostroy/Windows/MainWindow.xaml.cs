@@ -47,6 +47,8 @@ namespace Gradostroy
             service.Start_StatisticMech(GameWindow.StatisticGridInfo, this);
 
             service.Start_NotificationMech(GameWindow.NoMoneyNotificationBlock, this);
+
+            service.Start_enemy_service(GameWindow.MainGrid);
         }
 
 

@@ -18,6 +18,12 @@ public class MyTimer
     }
 
 
+    public void Stop()
+    {
+        main_timer.Stop();
+    }
+
+
     private void Timer_function(object sender, EventArgs e)
     {
         action?.Invoke();

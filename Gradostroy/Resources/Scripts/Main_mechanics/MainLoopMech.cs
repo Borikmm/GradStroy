@@ -21,7 +21,7 @@ namespace Gradostroy.Main_mechanics
         {
             // Main loop settings
             MainLoopMech_timer = new DispatcherTimer();
-            MainLoopMech_timer.Interval = TimeSpan.FromSeconds(Convert.ToDouble(Service.Game_Settings["MainLoopMech_FPS"]) / 100);
+            MainLoopMech_timer.Interval = TimeSpan.FromSeconds(1 / Convert.ToDouble(Service.Game_Settings["MainLoopMech_FPS"]));
             MainLoopMech_timer.Tick += FixedUpdate;
         }
 

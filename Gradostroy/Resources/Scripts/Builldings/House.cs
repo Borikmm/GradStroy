@@ -4,10 +4,10 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows;
+using System.Xml.Linq;
 
 public class House : Building
 {
-    public Canvas Buiding;
     private int _mining_money = -1;
 
     public House()
@@ -37,6 +37,10 @@ public class House : Building
     public override Canvas Render(int x, int y)
     {
         y -= top_margin;
+        Pos_X = x; Pos_Y = y;
+
+        // Chnge position
+        x -= 65;
 
 
         Canvas canvas = new Canvas();
@@ -94,7 +98,7 @@ public class House : Building
         Canvas.SetLeft(window2, x);
         Canvas.SetTop(window2, y);
         canvas.Children.Add(window2);
-        Buiding = canvas;
+        CanvasRendered = canvas;
         return canvas;
     }
 

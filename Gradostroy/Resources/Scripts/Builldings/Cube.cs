@@ -5,8 +5,6 @@ using System.Windows.Shapes;
 
 public class Cube : Building
 {
-    public Canvas Buiding;
-
 
     public Cube()
     {
@@ -25,6 +23,8 @@ public class Cube : Building
     {
         y -= top_margin;
 
+        Pos_X = x; Pos_Y = y;
+
         Canvas canvas = new Canvas();
 
         Rectangle wall = new Rectangle
@@ -37,7 +37,7 @@ public class Cube : Building
         Canvas.SetLeft(wall, x);
         Canvas.SetTop(wall, y);
         canvas.Children.Add(wall);
-        Buiding = canvas;
+        CanvasRendered = canvas;
         return canvas;
 
     }

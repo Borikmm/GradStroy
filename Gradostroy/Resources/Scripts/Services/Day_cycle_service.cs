@@ -34,6 +34,8 @@ public class Day_cycle_service
         this.Update_color_FPS = Update_on_hour;
 
         this.Night_Overlay = Night_Overlay;
+
+
     }
 
     /// <summary>
@@ -56,7 +58,7 @@ public class Day_cycle_service
             double find_sum_number = (255 * (100 / (Update_color_FPS * 4))) / 100;
 
             // check for exceeding blackout
-            if (Convert.ToDouble(transparencyLevel) + find_sum_number < 255)
+            if (Convert.ToDouble(transparencyLevel) + find_sum_number < 210)
                 // Addition transpanent
                 transparencyLevel = (byte)(Convert.ToDouble(transparencyLevel) + find_sum_number);
 
@@ -65,6 +67,7 @@ public class Day_cycle_service
             Color transparentColor = Color.FromArgb(transparencyLevel, 0, 0, 0);
 
             Night_Overlay.Background = new SolidColorBrush(transparentColor);
+
 
         }
 
@@ -82,6 +85,8 @@ public class Day_cycle_service
             Color transparentColor = Color.FromArgb(transparencyLevel, 0, 0, 0);
 
             Night_Overlay.Background = new SolidColorBrush(transparentColor);
+
+
         }
     }
 
@@ -90,7 +95,15 @@ public class Day_cycle_service
         if (now_time == 24)
         {
             now_time = 0;
+            ActionsService.ActionStartSpawn?.Invoke();
         }
+
+        if (now_time == 6)
+        {
+            ActionsService.ActionStopSpawn?.Invoke();
+        }
+
+
         now_time++;
         ATimeChanged?.Invoke(now_time);
     }

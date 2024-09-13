@@ -25,8 +25,8 @@
 
             <Menu Panel.ZIndex="100" Grid.Column="0">
                 <MenuItem Header="Buildings" HorizontalAlignment="Left" FontSize="20"  BorderBrush="Aqua" BorderThickness="5">
-                    <MenuItem Header="House" Click="Building_house"/>
-                    <MenuItem Header="Tower" Click="Building_tower"/>
+                    <MenuItem Header="House 20$" Click="Building_house"/>
+                    <MenuItem Header="Tower 10$" Click="Building_tower"/>
                 </MenuItem>
                 <MenuItem Header="Actions" HorizontalAlignment="Left" FontSize="20"  BorderBrush="Aqua" BorderThickness="5">
                     <MenuItem Header="Destroy" Click="Change_Action"/>
@@ -70,8 +70,9 @@
         <Canvas x:Name="Main_canvas" MouseDown="Main_canvas_MouseDown" Grid.Row="1"  Background="White" Panel.ZIndex="-10">
         </Canvas>
 
-        <Canvas x:Name="Night_overlay" Grid.Row="1" Panel.ZIndex="1000" Background="#00000000" IsHitTestVisible="False">
-        </Canvas>
+        <Canvas x:Name="Night_overlay" Grid.Row="1" Panel.ZIndex="1000" IsHitTestVisible="False" Background="White"/>
+
+        <Grid x:Name="MainGameObjectsGrid" Grid.Row="1"/>
 
     </Grid>
 </Page>

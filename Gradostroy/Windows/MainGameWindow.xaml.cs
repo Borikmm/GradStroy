@@ -24,7 +24,7 @@ namespace Gradostroy.Windows
 
         #region Building build_params
         // buildings list
-        private Dictionary<string, Building> Buildings_list = new Dictionary<string, Building>();
+        public static Dictionary<string, Building> Buildings_list = new Dictionary<string, Building>();
 
         // Need parametres for building
         private string cursor_fillen; //type action selected in menu
@@ -33,21 +33,31 @@ namespace Gradostroy.Windows
         // In window
         public static Action<int> Abuild_or_destroy;
         public static Func<int, bool> Acheck_balance;
+        public static Action<object> ADestroyBuilding;
 
         // In Building
         public static Action<int> AEarn_money;
+        private int colBuilding = 0;
         #endregion
 
         // Set block text and start it
         public Dictionary<string, Main_block> BlocksInfo;
-        public Tuple<int, int, Canvas> DaYCycleInfo;
+        public Canvas DaYCycleInfo;
         public Grid StatisticGridInfo;
         public TextBlock NoMoneyNotificationBlock;
+        public Grid MainGrid;
 
         public MainGameWindow()
         {
             InitializeComponent();
+            SubAllActions();
             SetGameInfo();
+        }
+
+
+        private void SubAllActions()
+        {
+            ADestroyBuilding += Destroy_build;
         }
 
         private void SetGameInfo()
@@ -64,11 +74,9 @@ namespace Gradostroy.Windows
                 {"Col_buildings_block" , new Main_block("Col_buildings_bloc", "0", "buildings: ", Col_buildings) }, // need doing with EventHandler
             };
 
+            MainGrid = MainGameObjectsGrid;
 
-            DaYCycleInfo = new Tuple<int, int, Canvas>(
-                Convert.ToInt16(Service.Game_Settings["Cycle_time"]),
-                Convert.ToInt16(Service.Game_Settings["Update_on_hour"]),
-                Night_overlay);
+            DaYCycleInfo = Night_overlay;
 
             StatisticGridInfo = Statistic_block;
 
@@ -128,6 +136,11 @@ namespace Gradostroy.Windows
                     {
                         ActionsService.ABuildDestroyed?.Invoke(((Building)((Canvas)building).Tag));
                         Destroy_build(building);
+                        try
+                        {
+                            Abuild_or_destroy?.Invoke(((Building)((Canvas)building).Tag).Sell_Cost);
+                        }
+                        catch { }
                     }
                     break;
                 case "info":
@@ -142,20 +155,17 @@ namespace Gradostroy.Windows
         }
 
 
-        private void Destroy_build(object building)
+        public void Destroy_build(object building)
         {
-            try
-            {
-                Abuild_or_destroy?.Invoke(((Building)((Canvas)building).Tag).Sell_Cost);
-            }
-            catch { }
-
             // Unsubscribe 
             ((Building)((Canvas)building).Tag).UnSub();
 
 
             // Delete from canvas
-            Main_content.Children.Remove((UIElement)building);
+            MainGameObjectsGrid.Children.Remove((UIElement)building);
+
+            Buildings_list.Remove(((Building)((Canvas)building).Tag).Name);
+
         }
 
         private void Spawn_building_in_sursor(int x, int y)
@@ -173,18 +183,20 @@ namespace Gradostroy.Windows
             var Building = build.Render(x, y);
 
             Building.MouseDown += new MouseButtonEventHandler(Building_MouseDown);
-            Building.Name = build.Name + Buildings_list.Count().ToString();
+            Building.Name = build.Name + colBuilding++;
             Building.Tag = build;
 
 
-            Main_content.Children.Add(Building);
-
+            MainGameObjectsGrid.Children.Add(Building);
+            build.Name = build.Name + colBuilding;
             // Call actions
             Abuild_or_destroy?.Invoke(build.Cost); // For balance changes
 
             ActionsService.ABuildBuilded?.Invoke((Building)build);
 
-            Buildings_list.Add(Building.Name, build);
+            Buildings_list.Add(build.Name, build);
+
+
         }
 
 

@@ -43,9 +43,25 @@ namespace Gradostroy
         /// </summary>
         public static readonly Dictionary<string, object> Game_Settings = new Dictionary<string, object>()
         {
-            { "Cycle_time", 120}, // day - night cycle
+            { "Cycle_time", 10}, // day - night cycle
             { "Update_on_hour", 30}, // fps update night overlay on one hour
-            { "MainLoopMech_FPS", 30}, // main loop fps
+            { "MainLoopMech_FPS", 60}, // main loop fps
+        };
+
+
+        public static Dictionary<int, string> Sprites = new Dictionary<int, string>()
+        {
+            { 1 , "../../../Resources/Sprites/Zombies/dub.png" },
+            { 2 , "../../../Resources/Sprites/Zombies/git.png" },
+            { 3 , "../../../Resources/Sprites/Zombies/lestn.png" },
+        };
+
+
+        public static Dictionary<MyColors, Color> MyColorsList = new Dictionary<MyColors, Color>()
+        {
+            { MyColors.Red, Color.FromArgb(0, 255, 255, 255) },
+            { MyColors.Yellow, Color.FromArgb(0, 0, 0, 0) },
+            { MyColors.White, Color.FromArgb(0, 0, 0, 0) }
         };
 
         #endregion
@@ -69,6 +85,8 @@ namespace Gradostroy
         #endregion
 
 
+        public static Random Random = new Random();
+
         Service() 
         {
             Start_balance_service();
@@ -84,7 +102,7 @@ namespace Gradostroy
             _balance_service = new Balance_service();
         }
 
-        private void Start_enemy_service(Grid grid)
+        public void Start_enemy_service(Grid grid)
         {
             _enemyService = new EnemyService(grid);
         }
@@ -115,9 +133,9 @@ namespace Gradostroy
             _balance_service.Set_balance(Convert.ToInt32(blocks["Balance_block"].Text));
         }
 
-        public void Start_day_cycle_service(Tuple<int, int, Canvas> DaYCycleInfo)
+        public void Start_day_cycle_service(Canvas DaYCycleInfo)
         {
-            _day_cycle_manager = new Day_cycle_service(DaYCycleInfo.Item1, DaYCycleInfo.Item2, DaYCycleInfo.Item3);
+            _day_cycle_manager = new Day_cycle_service((int)Game_Settings["Cycle_time"], (int)Game_Settings["Update_on_hour"], DaYCycleInfo);
             _day_cycle_manager.Start_day_cycle();
         }
 

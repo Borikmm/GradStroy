@@ -1,6 +1,7 @@
 ﻿using Gradostroy;
 using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 /// <summary>
 /// Class for text blocks working. 
@@ -42,6 +43,16 @@ public class Blocks_service
 
     private void Update_statistic_block(Building building, string name) // increment
     {
+        if (building.Name == "House")
+        {
+            UpdateHouse(name);
+        }
+        
+
+    }
+
+    private void UpdateHouse(string name)
+    {
         switch (name)
         {
             case "Destroy":
@@ -59,7 +70,6 @@ public class Blocks_service
                 blocks["MiningSpeed_block"].link.Text = blocks["MiningSpeed_block"].Text + blocks["MiningSpeed_block"].Spliter;
                 break;
         }
-
     }
 
 

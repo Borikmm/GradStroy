@@ -12,6 +12,10 @@ public class ActionsService
     public static Action<Building> ABuildBuilded;
     public static Action<Building> ABuildDestroyed;
 
+
+    public static Action ActionStartSpawn;
+    public static Action ActionStopSpawn;
+
     public ActionsService()
     {
         ABuildBuilded += BuildBuilded;

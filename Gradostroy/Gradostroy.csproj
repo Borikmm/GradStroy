@@ -55,7 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\Scripts\Abstractions\BaseGameClass.cs" />
+    <Compile Include="Resources\Scripts\Abstractions\BattleEntity.cs" />
+    <Compile Include="Resources\Scripts\Abstractions\GameEntity.cs" />
+    <Compile Include="Resources\Scripts\Abstractions\RenderElement.cs" />
     <Compile Include="Resources\Scripts\Enemys\Zombie.cs" />
+    <Compile Include="Resources\Scripts\Enums\Enums.cs" />
     <Compile Include="Resources\Scripts\Interfaces.cs" />
     <Compile Include="Resources\Scripts\Abstractions\Building.cs" />
     <Compile Include="Resources\Scripts\Abstractions\Enemy.cs" />
@@ -121,6 +126,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Sprites\Zombies\dub.png" />
+    <Resource Include="Resources\Sprites\Zombies\git.png" />
+    <Resource Include="Resources\Sprites\Zombies\lestn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
