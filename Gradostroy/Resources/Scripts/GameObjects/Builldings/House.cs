@@ -12,7 +12,7 @@ public class House : Building
 
     public House()
     {
-        Name = "House";
+        BaseName = "House";
         Cost = 20;
         Sell_Cost = -10;
     }
@@ -34,10 +34,21 @@ public class House : Building
     }
 
 
-    public override Canvas Render(int x, int y)
+    public override Canvas Render(int x, int y, int width, int height, string Image_path = null)
     {
-        y -= top_margin;
-        Pos_X = x; Pos_Y = y;
+
+        y -= 100;
+        x -= 50;
+
+
+        Image_path = "../../../../Resources/Sprites/Buildings/house-Photoroom.png";
+
+        return base.Render(x, y, width, height, Image_path);
+
+
+        // old code
+        /*y -= top_margin;
+        position.x = x; position.y = y;
 
         // Chnge position
         x -= 65;
@@ -99,7 +110,7 @@ public class House : Building
         Canvas.SetTop(window2, y);
         canvas.Children.Add(window2);
         CanvasRendered = canvas;
-        return canvas;
+        return canvas;*/
     }
 
     public override void FixedUpdate()

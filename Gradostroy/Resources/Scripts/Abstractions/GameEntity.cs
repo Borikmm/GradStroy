@@ -12,12 +12,10 @@ using System.Windows.Media.Imaging;
 using Gradostroy.Windows;
 
 
-public abstract class GameEntity : RenderElement, IXPmanager, IGameLoop, IRenderObject
+public abstract class GameEntity : RenderElement, IXPmanager, IGameLoop
 {
-    public Canvas CanvasRendered;
-    public string Name;
     public int _XP = 10;
-
+    public bool _isAlife = true;
 
     public void GetDamage(int damage_value)
     {
@@ -48,6 +46,11 @@ public abstract class GameEntity : RenderElement, IXPmanager, IGameLoop, IRender
     private void Change_XP(int damage_value)
     {
         _XP -= damage_value;
+        if (!Check_XP())
+        {
+            _isAlife = false;
+            MainGameWindow.ADestroyBuilding?.Invoke(CanvasRendered);
+        }
     }
 
     public virtual void FixedUpdate()
@@ -62,10 +65,6 @@ public abstract class GameEntity : RenderElement, IXPmanager, IGameLoop, IRender
         throw new NotImplementedException();
     }
 
-    public virtual Canvas Render(int x, int y)
-    {
-        return null;
-    }
 
     void IXPmanager.Change_XP(int value)
     {

@@ -5,6 +5,7 @@ using System.Windows.Media.Imaging;
 using Gradostroy.Windows;
 using System.Linq;
 using Gradostroy.Main_mechanics;
+using System.Windows;
 
 public class Zombie : Enemy
 {
@@ -18,6 +19,10 @@ public class Zombie : Enemy
         _target = Target;
         speed = 2;
         MainLoopMech.AFixedUpdate += FixedUpdate;
+
+        BaseName = "Zombie";
+
+
     }
 
     ~Zombie()
@@ -37,12 +42,12 @@ public class Zombie : Enemy
         foreach (var target in MainGameWindow.Buildings_list.Values)
         {
             // Получаем координаты цели
-            targetX = ((Building)target).Pos_X;
-            targetY = ((Building)target).Pos_Y;
+            targetX = ((Building)target).position.x;
+            targetY = ((Building)target).position.y;
 
             // Вычисляем разницу между текущими координатами и координатами цели
-            deltaX = targetX - Pos_X;
-            deltaY = targetY - Pos_Y;
+            deltaX = targetX - position.x;
+            deltaY = targetY - position.y;
 
             // Вычисляем расстояние до цели
             var new_distance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
@@ -57,8 +62,8 @@ public class Zombie : Enemy
 
         _target = nearest_obj;
 
-        var dif_x = Math.Max(((Building)_target).Pos_X, Pos_X) - Math.Min(((Building)_target).Pos_X, Pos_X);
-        var dif_y = Math.Max(((Building)_target).Pos_Y, Pos_Y) - Math.Min(((Building)_target).Pos_Y, Pos_Y);
+        var dif_x = Math.Max(((Building)_target).position.x, position.x) - Math.Min(((Building)_target).position.x, position.x);
+        var dif_y = Math.Max(((Building)_target).position.y, position.y) - Math.Min(((Building)_target).position.y, position.y);
 
         who_max = dif_x > dif_y ? true : false;
 
@@ -66,31 +71,6 @@ public class Zombie : Enemy
         var min_pos = Math.Min(dif_y, dif_x);
 
         step_for_min = (speed * min_pos) / max_pos;
-    }
-
-
-    public override Canvas Render(int x, int y)
-    {
-
-        Pos_X = x; Pos_Y = y;
-        Canvas canvas = new Canvas();
-
-        Image image = new Image
-        {
-            Width = 150,
-            Height = 100,
-            Source = new BitmapImage(new Uri(Service.Sprites[Service.Random.Next(1, 4)], UriKind.Relative)),
-        };
-
-        Image = image;
-
-        Canvas.SetLeft(image, x);
-        Canvas.SetTop(image, y);
-
-        canvas.Children.Add(image);
-        CanvasRendered = canvas;
-        return canvas;
-
     }
 
 
@@ -108,12 +88,12 @@ public class Zombie : Enemy
             return;
         } 
         // Получаем координаты цели
-        double targetX = ((Building)_target).Pos_X;
-        double targetY = ((Building)_target).Pos_Y;
+        double targetX = ((Building)_target).position.x;
+        double targetY = ((Building)_target).position.y;
 
         // Вычисляем разницу между текущими координатами и координатами цели
-        double deltaX = targetX - Pos_X;
-        double deltaY = targetY - Pos_Y;
+        double deltaX = targetX - position.x;
+        double deltaY = targetY - position.y;
 
         // Вычисляем расстояние до цели
         double distance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
@@ -128,10 +108,10 @@ public class Zombie : Enemy
         // Если зомби достиг цели, выходим из метода
         if (distance < speed)
         {
-            Pos_X = targetX;
-            Pos_Y = targetY;
-            Canvas.SetLeft(Image, Pos_X);
-            Canvas.SetTop(Image, Pos_Y);
+            position.x = targetX;
+            position.y = targetY;
+            Canvas.SetLeft(sprite, position.x);
+            Canvas.SetTop(sprite, position.y);
             return;
         }
 
@@ -140,12 +120,19 @@ public class Zombie : Enemy
         double normalizedY = deltaY / distance;
 
         // Обновляем позицию зомби с учетом направления
-        Pos_X += normalizedX * speed;
-        Pos_Y += normalizedY * speed;
+        position.x += normalizedX * speed;
+        position.y += normalizedY * speed;
+
+        UpdatePivot();
 
         // Устанавливаем новую позицию зомби
-        Canvas.SetLeft(Image, Pos_X);
-        Canvas.SetTop(Image, Pos_Y);
+        Canvas.SetLeft(sprite, position.x);
+        Canvas.SetTop(sprite, position.y);
+    }
+
+    public override void UnSub()
+    {
+        MainLoopMech.AFixedUpdate -= FixedUpdate;
     }
 
     private void HandleCollision()
@@ -153,9 +140,8 @@ public class Zombie : Enemy
         // Логика обработки столкновения (например, уменьшение здоровья башни или уничтожение зомби)
         Console.WriteLine("regrg");
         _target.GetDamage(_damage);
-        if (!((Building)_target).Check_XP())
+        if (!_target.Check_XP())
         {
-            MainGameWindow.ADestroyBuilding?.Invoke(((Building)_target).CanvasRendered);
             _target = null;
         }
     }

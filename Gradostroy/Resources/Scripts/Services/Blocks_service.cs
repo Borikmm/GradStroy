@@ -1,6 +1,7 @@
 ﻿using Gradostroy;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Xml.Linq;
 
 /// <summary>
@@ -43,31 +44,47 @@ public class Blocks_service
 
     private void Update_statistic_block(Building building, string name) // increment
     {
-        if (building.Name == "House")
+        if (building.BaseName == "House")
         {
-            UpdateHouse(name);
+            UpdateMiningSpeed(name);
+            UpdateColBuildings(name);
+        }
+
+        else if(building.BaseName == "Tower")
+        {
+            UpdateColBuildings(name);
         }
         
 
     }
 
-    private void UpdateHouse(string name)
+
+    private void UpdateMiningSpeed(string name)
+    {
+        switch (name)
+        {
+            case "Destroy":
+                blocks["MiningSpeed_block"].Text = (Convert.ToInt16(Blocks_service.blocks["MiningSpeed_block"].Text) - 1).ToString();
+                blocks["MiningSpeed_block"].link.Text = blocks["MiningSpeed_block"].Text + blocks["MiningSpeed_block"].Spliter;
+                break;
+            case "build":
+                blocks["MiningSpeed_block"].Text = (Convert.ToInt16(Blocks_service.blocks["MiningSpeed_block"].Text) + 1).ToString();
+                blocks["MiningSpeed_block"].link.Text = blocks["MiningSpeed_block"].Text + blocks["MiningSpeed_block"].Spliter;
+                break;
+        }
+    }
+
+    private void UpdateColBuildings(string name)
     {
         switch (name)
         {
             case "Destroy":
                 blocks["Col_buildings_block"].Text = (Convert.ToInt16(Blocks_service.blocks["Col_buildings_block"].Text) - 1).ToString();
                 blocks["Col_buildings_block"].link.Text = blocks["Col_buildings_block"].Spliter + blocks["Col_buildings_block"].Text;
-
-                blocks["MiningSpeed_block"].Text = (Convert.ToInt16(Blocks_service.blocks["MiningSpeed_block"].Text) - 1).ToString();
-                blocks["MiningSpeed_block"].link.Text = blocks["MiningSpeed_block"].Text + blocks["MiningSpeed_block"].Spliter;
                 break;
             case "build":
                 blocks["Col_buildings_block"].Text = (Convert.ToInt16(Blocks_service.blocks["Col_buildings_block"].Text) + 1).ToString();
                 blocks["Col_buildings_block"].link.Text = blocks["Col_buildings_block"].Spliter + blocks["Col_buildings_block"].Text;
-
-                blocks["MiningSpeed_block"].Text = (Convert.ToInt16(Blocks_service.blocks["MiningSpeed_block"].Text) + 1).ToString();
-                blocks["MiningSpeed_block"].link.Text = blocks["MiningSpeed_block"].Text + blocks["MiningSpeed_block"].Spliter;
                 break;
         }
     }

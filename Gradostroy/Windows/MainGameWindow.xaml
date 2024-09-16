@@ -14,7 +14,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Title" Grid.Row="0" Background="#FFF0F0F0">
+        <Grid x:Name="Title" Grid.Row="0">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Sprites/Other/der.jpg" TileMode="None"/>
+            </Grid.Background>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -24,6 +27,9 @@
 
 
             <Menu Panel.ZIndex="100" Grid.Column="0">
+                <Menu.Background>
+                    <ImageBrush ImageSource="/Resources/Sprites/Other/der.jpg"/>
+                </Menu.Background>
                 <MenuItem Header="Buildings" HorizontalAlignment="Left" FontSize="20"  BorderBrush="Aqua" BorderThickness="5">
                     <MenuItem Header="House 20$" Click="Building_house"/>
                     <MenuItem Header="Tower 10$" Click="Building_tower"/>
@@ -47,10 +53,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Border  BorderBrush="Aqua" BorderThickness="5" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                <TextBlock x:Name="Balance_block" Text="$: " VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
-                <TextBlock x:Name="Time_block" Text="$: " VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" FontSize="20" Foreground="#FF3D2FEF" Margin="0 0 0 0"></TextBlock>
-                <TextBlock x:Name="Mining_Speed_block" Text="" Grid.Row="1" HorizontalAlignment="Left" FontSize="12" Foreground="#FF020602" Margin="0 0 0 0"></TextBlock>
-                <TextBlock x:Name="no_money_notification" Grid.Row="0" Text="No money!" Grid.ColumnSpan="2" HorizontalAlignment="Center" Opacity="0" Foreground="Red" Panel.ZIndex="1000"></TextBlock>
+                <TextBlock x:Name="Balance_block" Text="$: " VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Foreground="black" Margin="5 0 0 0"></TextBlock>
+                <TextBlock x:Name="Time_block" Text="$: " VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" FontSize="20" Foreground="black" Margin="0 0 0 0"></TextBlock>
+                <TextBlock x:Name="Mining_Speed_block" Text="" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="12" Foreground="#FF020602" Margin="0 0 0 0"></TextBlock>
             </Grid>
 
             <Grid x:Name="Statistic_block" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Visibility="Hidden">
@@ -59,18 +64,27 @@
 
 
             <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Panel.ZIndex="101" x:Name="Addition_Info_panel">
-                <TextBlock x:Name="Version_block" Text="Version: " VerticalAlignment="Top"  HorizontalAlignment="Right" FontSize="20" Foreground="#FF3D2FEF"></TextBlock>
-                <TextBlock x:Name="Devel_block" Text="By " VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Right" FontSize="20" Foreground="#FF3D2FEF"></TextBlock>
+                <TextBlock x:Name="Version_block" Text="Version: " VerticalAlignment="Top"  HorizontalAlignment="Right" FontSize="20" Foreground="black"></TextBlock>
+                <TextBlock x:Name="Devel_block" Text="By " VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Right" FontSize="20" Foreground="black"></TextBlock>
             </StackPanel>
 
         </Grid>
 
+        <TextBlock x:Name="no_money_notification" Text="No money!" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" Opacity="0" Foreground="Red" Panel.ZIndex="10000" VerticalAlignment="Top"></TextBlock>
 
 
-        <Canvas x:Name="Main_canvas" MouseDown="Main_canvas_MouseDown" Grid.Row="1"  Background="White" Panel.ZIndex="-10">
+        <Canvas x:Name="Main_canvas" MouseDown="Main_canvas_MouseDown" Grid.Row="1"  Panel.ZIndex="-10">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/Resources/Sprites/Other/terrain.png" Stretch="UniformToFill"/>
+            </Canvas.Background>
+
+
+
         </Canvas>
 
-        <Canvas x:Name="Night_overlay" Grid.Row="1" Panel.ZIndex="1000" IsHitTestVisible="False" Background="White"/>
+        <Canvas x:Name="Night_overlay" Grid.Row="1" Panel.ZIndex="1000" IsHitTestVisible="False">
+
+        </Canvas>
 
         <Grid x:Name="MainGameObjectsGrid" Grid.Row="1"/>
 

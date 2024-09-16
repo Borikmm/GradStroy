@@ -9,20 +9,38 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 public class EnemyService
 {
     private List<Enemy> _enemys;
 
-
+    public List<Enemy> Enemys => _enemys;
 
     private Grid _grid;
 
+
+    int _zombieHeight = 100;
+    int _zombieWight = 150;
+
+
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        if (_enemys.Contains(enemy))
+        {
+            _enemys.Remove(enemy);
+        }
+            
+            
+    }
+
+
     public EnemyService(Grid grid)
     {
-        _grid = grid;
-        _enemys = new List<Enemy>();
 
+        _enemys = new List<Enemy>();
+        _grid = grid;
 
         ActionsService.ActionStartSpawn += Start;
         ActionsService.ActionStopSpawn += Stop;
@@ -67,9 +85,16 @@ public class EnemyService
             x = Service.Random.Next(0, (int)_grid.ActualWidth);
             y = (int)_grid.ActualHeight - 100;
         }
-        var renderEnemy = enemy.Render(x, y);
-        _grid.Children.Add(renderEnemy);
 
+
+        var renderEnemy = enemy.Render(x, y, _zombieWight, _zombieHeight, Service.Sprites[Service.Random.Next(1, 4)]);
+
+
+        enemy.Name = enemy.BaseName + _enemys.Count.ToString();
+        renderEnemy.Tag = enemy;
+
+
+        _grid.Children.Add(renderEnemy);
         //renderEnemy.Background = new SolidColorBrush(Service.MyColorsList[MyColors.Red]);
 
 

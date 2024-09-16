@@ -51,9 +51,9 @@ namespace Gradostroy
 
         public static Dictionary<int, string> Sprites = new Dictionary<int, string>()
         {
-            { 1 , "../../../Resources/Sprites/Zombies/dub.png" },
-            { 2 , "../../../Resources/Sprites/Zombies/git.png" },
-            { 3 , "../../../Resources/Sprites/Zombies/lestn.png" },
+            { 1 , "../../../../Resources/Sprites/Zombies/dub.png" },
+            { 2 , "../../../../Resources/Sprites/Zombies/git.png" },
+            { 3 , "../../../../Resources/Sprites/Zombies/lestn.png" },
         };
 
 
@@ -75,9 +75,9 @@ namespace Gradostroy
         Build_mechanic _build_Mechanic;
         NotificationMech _not_mech;
         ActionsService _actionsService;
-        EnemyService _enemyService;
 
 
+        public static EnemyService _enemyService;
         public static MainLoopMech MainLoopMech;
         public static Game_main_timers_service main_timers; // public and static for access from all programm space
 

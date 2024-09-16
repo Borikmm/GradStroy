@@ -59,15 +59,16 @@
     <Compile Include="Resources\Scripts\Abstractions\BattleEntity.cs" />
     <Compile Include="Resources\Scripts\Abstractions\GameEntity.cs" />
     <Compile Include="Resources\Scripts\Abstractions\RenderElement.cs" />
-    <Compile Include="Resources\Scripts\Enemys\Zombie.cs" />
+    <Compile Include="Resources\Scripts\GameObjects\Enemys\Zombie.cs" />
     <Compile Include="Resources\Scripts\Enums\Enums.cs" />
+    <Compile Include="Resources\Scripts\GameObjects\Others\Bullet.cs" />
     <Compile Include="Resources\Scripts\Interfaces.cs" />
     <Compile Include="Resources\Scripts\Abstractions\Building.cs" />
     <Compile Include="Resources\Scripts\Abstractions\Enemy.cs" />
     <Compile Include="Resources\Scripts\Abstractions\MyTextBlock.cs" />
     <Compile Include="Resources\Scripts\BlocksInfo\Main_block.cs" />
-    <Compile Include="Resources\Scripts\Builldings\Cube.cs" />
-    <Compile Include="Resources\Scripts\Builldings\House.cs" />
+    <Compile Include="Resources\Scripts\GameObjects\Builldings\Tower.cs" />
+    <Compile Include="Resources\Scripts\GameObjects\Builldings\House.cs" />
     <Compile Include="Resources\Scripts\Main_mechanics\Build_mechanic.cs" />
     <Compile Include="Resources\Scripts\Main_mechanics\MainLoopMech.cs" />
     <Compile Include="Resources\Scripts\Main_mechanics\NotificationMech.cs" />
@@ -92,6 +93,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Resources\Scripts\Structs\Postition.cs" />
     <Compile Include="Windows\MainGameWindow.xaml.cs">
       <DependentUpon>MainGameWindow.xaml</DependentUpon>
     </Compile>
@@ -130,6 +132,28 @@
     <Resource Include="Resources\Sprites\Zombies\dub.png" />
     <Resource Include="Resources\Sprites\Zombies\git.png" />
     <Resource Include="Resources\Sprites\Zombies\lestn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sprites\Buildings\Tower_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sprites\Buildings\house-Photoroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sprites\Other\terrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sprites\Other\der.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sprites\Buttons\close.png" />
+    <Resource Include="Resources\Sprites\Buttons\rol_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\der.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sprites\Buttons\full.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

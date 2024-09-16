@@ -14,7 +14,7 @@ namespace Gradostroy
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private bool full_window = false;
         MainGameWindow GameWindow;
         // Create service for working with balance, blocks and other game mechanics
         Service service = Service.Instance;
@@ -48,7 +48,7 @@ namespace Gradostroy
 
             service.Start_NotificationMech(GameWindow.NoMoneyNotificationBlock, this);
 
-            service.Start_enemy_service(GameWindow.MainGrid);
+            service.Start_enemy_service(MainGameWindow.MainGrid);
         }
 
 
@@ -61,6 +61,38 @@ namespace Gradostroy
         private void StartGame()
         {
             MainFrame.Navigate(GameWindow);
+        }
+
+        private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Close_button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Rol_up_button_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Max_window_button_button_Click(object sender, RoutedEventArgs e)
+        {
+            if (full_window)
+            {
+                full_window = false;
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                full_window = true;
+                this.WindowState = WindowState.Maximized;
+            }
         }
     }
 }

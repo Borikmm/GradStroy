@@ -33,7 +33,7 @@ namespace Gradostroy.Windows
         // In window
         public static Action<int> Abuild_or_destroy;
         public static Func<int, bool> Acheck_balance;
-        public static Action<object> ADestroyBuilding;
+        public static Action<Canvas> ADestroyBuilding;
 
         // In Building
         public static Action<int> AEarn_money;
@@ -45,7 +45,8 @@ namespace Gradostroy.Windows
         public Canvas DaYCycleInfo;
         public Grid StatisticGridInfo;
         public TextBlock NoMoneyNotificationBlock;
-        public Grid MainGrid;
+
+        public static Grid MainGrid;
 
         public MainGameWindow()
         {
@@ -57,16 +58,16 @@ namespace Gradostroy.Windows
 
         private void SubAllActions()
         {
-            ADestroyBuilding += Destroy_build;
+            ADestroyBuilding += Destroy_canvas;
         }
 
         private void SetGameInfo()
         {
             BlocksInfo = new Dictionary<string, Main_block>()
             {
-                {"Version_block" , new Main_block("Version_block", "0.2", "Version: ", Version_block) },
+                {"Version_block" , new Main_block("Version_block", "0.5", "Version: ", Version_block) },
                 {"Devel_block" , new Main_block("Devel_block", "Borikmm", "By: ", Devel_block) },
-                {"Balance_block" , new Main_block("Balance_block", "100", "Balance: ", Balance_block) },
+                {"Balance_block" , new Main_block("Balance_block", "100", "$", Balance_block, true) },
                 {"Time_block" , new Main_block("Time_block", "6", ":00", Time_block, true) },
                 {"MiningSpeed_block" , new Main_block("MiningSpeed_block", "0", " in one seconds", Mining_Speed_block, true) },
 
@@ -102,7 +103,7 @@ namespace Gradostroy.Windows
             switch (type_build)
             {
                 case "Cube":
-                    Cube cube = new Cube();
+                    Tower cube = new Tower(MainGrid);
                     return cube;
                 case "House":
                     House house = new House();
@@ -135,7 +136,7 @@ namespace Gradostroy.Windows
                     if (building != null)
                     {
                         ActionsService.ABuildDestroyed?.Invoke(((Building)((Canvas)building).Tag));
-                        Destroy_build(building);
+                        Destroy_canvas((Canvas)building);
                         try
                         {
                             Abuild_or_destroy?.Invoke(((Building)((Canvas)building).Tag).Sell_Cost);
@@ -155,17 +156,20 @@ namespace Gradostroy.Windows
         }
 
 
-        public void Destroy_build(object building)
+        public void Destroy_canvas(Canvas canvas)
         {
-            // Unsubscribe 
-            ((Building)((Canvas)building).Tag).UnSub();
+            ((RenderElement)canvas.Tag).Destroy((RenderElement)canvas.Tag);
 
-
-            // Delete from canvas
-            MainGameObjectsGrid.Children.Remove((UIElement)building);
-
-            Buildings_list.Remove(((Building)((Canvas)building).Tag).Name);
-
+            switch (canvas.Tag)
+            {
+                case Building build:
+                    Buildings_list.Remove(build.Name);
+                    break;
+                case Enemy enemy:
+                    AEarn_money?.Invoke(-enemy.GoldEarned);
+                    Service._enemyService.RemoveEnemy(enemy);
+                    break;
+            }
         }
 
         private void Spawn_building_in_sursor(int x, int y)
@@ -183,12 +187,12 @@ namespace Gradostroy.Windows
             var Building = build.Render(x, y);
 
             Building.MouseDown += new MouseButtonEventHandler(Building_MouseDown);
-            Building.Name = build.Name + colBuilding++;
+            Building.Name = build.BaseName + colBuilding++;
             Building.Tag = build;
 
 
             MainGameObjectsGrid.Children.Add(Building);
-            build.Name = build.Name + colBuilding;
+            build.Name = build.BaseName + colBuilding;
             // Call actions
             Abuild_or_destroy?.Invoke(build.Cost); // For balance changes
 
