@@ -138,7 +138,6 @@ public class Zombie : Enemy
     private void HandleCollision()
     {
         // Логика обработки столкновения (например, уменьшение здоровья башни или уничтожение зомби)
-        Console.WriteLine("regrg");
         _target.GetDamage(_damage);
         if (!_target.Check_XP())
         {

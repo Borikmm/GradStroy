@@ -31,20 +31,24 @@ namespace Gradostroy.Windows
         private string type_build_selected;
 
         // In window
-        public static Action<int> Abuild_or_destroy;
-        public static Func<int, bool> Acheck_balance;
+        public static Action<float> Abuild_or_destroy;
+        public static Func<float, bool> Acheck_balance;
         public static Action<Canvas> ADestroyBuilding;
 
         // In Building
-        public static Action<int> AEarn_money;
+        public static Action<float> AEarn_money;
         private int colBuilding = 0;
+        private float costModificator = 1f;
         #endregion
 
         // Set block text and start it
         public Dictionary<string, Main_block> BlocksInfo;
         public Canvas DaYCycleInfo;
-        public Grid StatisticGridInfo;
+        public StackPanel StatisticGridInfo;
+
+
         public TextBlock NoMoneyNotificationBlock;
+        public TextBlock ColNightNotificationBlock;
 
         public static Grid MainGrid;
 
@@ -73,6 +77,7 @@ namespace Gradostroy.Windows
 
                 // statistic blocks
                 {"Col_buildings_block" , new Main_block("Col_buildings_bloc", "0", "buildings: ", Col_buildings) }, // need doing with EventHandler
+                {"KilledZombie" , new Main_block("KilledZombie", "0", "Killed zombie: ", KilledZombie) }, // need doing with EventHandler
             };
 
             MainGrid = MainGameObjectsGrid;
@@ -82,6 +87,8 @@ namespace Gradostroy.Windows
             StatisticGridInfo = Statistic_block;
 
             NoMoneyNotificationBlock = no_money_notification;
+
+            ColNightNotificationBlock = newNight;
 
         }
 
@@ -130,7 +137,12 @@ namespace Gradostroy.Windows
             {
                 case "build":
                     if (X != 0)
+                    {
                         Spawn_building_in_sursor(Convert.ToInt32(X), Convert.ToInt32(Y));
+
+                        costModificator += 0.05f;
+                    }
+
                     break;
                 case "Destroy":
                     if (building != null)
@@ -142,6 +154,7 @@ namespace Gradostroy.Windows
                             Abuild_or_destroy?.Invoke(((Building)((Canvas)building).Tag).Sell_Cost);
                         }
                         catch { }
+                        costModificator -= 0.05f;
                     }
                     break;
                 case "info":
@@ -168,6 +181,7 @@ namespace Gradostroy.Windows
                 case Enemy enemy:
                     AEarn_money?.Invoke(-enemy.GoldEarned);
                     Service._enemyService.RemoveEnemy(enemy);
+                    ActionsService.AZombieKilled?.Invoke(enemy);
                     break;
             }
         }
@@ -176,7 +190,7 @@ namespace Gradostroy.Windows
         {
             var build = Create_build(type_build_selected);
 
-            if ((bool)(Acheck_balance?.Invoke(build.Cost)))
+            if ((bool)(Acheck_balance?.Invoke(build.Cost * costModificator)))
             {
                 Build_mechanic.ANomoney?.Invoke();
                 return;
@@ -194,7 +208,7 @@ namespace Gradostroy.Windows
             MainGameObjectsGrid.Children.Add(Building);
             build.Name = build.BaseName + colBuilding;
             // Call actions
-            Abuild_or_destroy?.Invoke(build.Cost); // For balance changes
+            Abuild_or_destroy?.Invoke(build.Cost * costModificator); // For balance changes
 
             ActionsService.ABuildBuilded?.Invoke((Building)build);
 

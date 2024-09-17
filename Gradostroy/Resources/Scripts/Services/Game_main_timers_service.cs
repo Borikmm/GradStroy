@@ -7,10 +7,10 @@ using System.Collections.Generic;
 public class Game_main_timers_service
 {
 
-    private static Dictionary<string, int> timers_ticks = new Dictionary<string, int>()
+    public static Dictionary<string, float> timers_ticks = new Dictionary<string, float>()
     {
         {"Mining_timer", 1},
-        {"Spawn_enemy_timer", 2 },
+        {"Spawn_enemy_timer", 2f },
     };
 
     public MyTimer Mining_timer = new MyTimer(tick: timers_ticks["Mining_timer"]);

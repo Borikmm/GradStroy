@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Xml.Linq;
 
 /// <summary>
@@ -12,7 +13,7 @@ public class Blocks_service
 
     public static Dictionary<string, Main_block> blocks;
 
-    public static Action<Building, string> AUpdateStatisticBlock;
+    public static Action<GameEntity, string> AUpdateStatisticBlock;
 
 
     public Blocks_service(Dictionary<string, Main_block> blocks_)
@@ -42,7 +43,7 @@ public class Blocks_service
         blocks["Balance_block"].link.Text = blocks["Balance_block"].Spliter + " " + balance.ToString();
     }
 
-    private void Update_statistic_block(Building building, string name) // increment
+    private void Update_statistic_block(GameEntity building, string name) // increment
     {
         if (building.BaseName == "House")
         {
@@ -54,8 +55,20 @@ public class Blocks_service
         {
             UpdateColBuildings(name);
         }
+
+
+        else if (name == "Killed")
+        {
+            UpdateZombie();
+        }
         
 
+    }
+
+    private void UpdateZombie()
+    {
+        blocks["KilledZombie"].Text = (Convert.ToInt16(Blocks_service.blocks["KilledZombie"].Text) + 1).ToString();
+        blocks["KilledZombie"].link.Text = blocks["KilledZombie"].Spliter + blocks["KilledZombie"].Text;
     }
 
 

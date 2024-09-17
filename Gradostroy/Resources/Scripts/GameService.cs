@@ -43,7 +43,7 @@ namespace Gradostroy
         /// </summary>
         public static readonly Dictionary<string, object> Game_Settings = new Dictionary<string, object>()
         {
-            { "Cycle_time", 10}, // day - night cycle
+            { "Cycle_time", 10}, // day - night cycle  // Real 120
             { "Update_on_hour", 30}, // fps update night overlay on one hour
             { "MainLoopMech_FPS", 60}, // main loop fps
         };
@@ -113,7 +113,7 @@ namespace Gradostroy
             _actionsService = new ActionsService();
         }
 
-        public void Start_StatisticMech(Grid textBlock, object win)
+        public void Start_StatisticMech(StackPanel textBlock, object win)
         {
             _statistic = new StatisticMech(textBlock, win);
         }
@@ -151,9 +151,9 @@ namespace Gradostroy
             _build_Mechanic = new Build_mechanic();
         }
 
-        public void Start_NotificationMech(TextBlock block, object win)
+        public void Start_NotificationMech(TextBlock block, TextBlock two, object win)
         {
-            _not_mech = new NotificationMech(block, win);
+            _not_mech = new NotificationMech(block, two, win);
         }
 
 

@@ -58,9 +58,10 @@
                 <TextBlock x:Name="Mining_Speed_block" Text="" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="12" Foreground="#FF020602" Margin="0 0 0 0"></TextBlock>
             </Grid>
 
-            <Grid x:Name="Statistic_block" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Visibility="Hidden">
-                <TextBlock x:Name="Col_buildings" Text="buildings:"/>
-            </Grid>
+            <StackPanel x:Name="Statistic_block" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Visibility="Hidden">
+                <TextBlock FontSize="18" x:Name="Col_buildings" Text="buildings:"/>
+                <TextBlock FontSize="18" x:Name="KilledZombie" Text="Killed zombie:"/>
+            </StackPanel>
 
 
             <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Panel.ZIndex="101" x:Name="Addition_Info_panel">
@@ -70,8 +71,12 @@
 
         </Grid>
 
-        <TextBlock x:Name="no_money_notification" Text="No money!" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" Opacity="0" Foreground="Red" Panel.ZIndex="10000" VerticalAlignment="Top"></TextBlock>
 
+        <TextBlock x:Name="newNight" Text="" Grid.Row="1" HorizontalAlignment="Center" FontSize="50" Opacity="0" Foreground="Red" Panel.ZIndex="10000" VerticalAlignment="Center"></TextBlock>
+
+        <Canvas Panel.ZIndex="10000">
+            <TextBlock Panel.ZIndex="10000" x:Name="no_money_notification" Text="No money!" Grid.Row="1" FontSize="24" Opacity="0" Foreground="Red"  Visibility="Hidden"></TextBlock>
+        </Canvas>
 
         <Canvas x:Name="Main_canvas" MouseDown="Main_canvas_MouseDown" Grid.Row="1"  Panel.ZIndex="-10">
             <Canvas.Background>

@@ -28,16 +28,14 @@ public class Balance_service
         _balance = balance;
     }
 
-    private bool Check_Balance(int cost)
+    private bool Check_Balance(float cost)
     {
-        if (_balance < cost)
-            return true;
-        else return false;
+        return _balance < cost;
     }
 
-    private void Change_Balance(int number)
+    private void Change_Balance(float number)
     {
-        _balance -= number;
+        _balance -= (int)Math.Floor(number);
         AUpdate_balance?.Invoke(_balance);
     }
 

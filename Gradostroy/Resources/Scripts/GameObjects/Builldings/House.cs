@@ -37,7 +37,7 @@ public class House : Building
     public override Canvas Render(int x, int y, int width, int height, string Image_path = null)
     {
 
-        y -= 100;
+        y -= 120;
         x -= 50;
 
 

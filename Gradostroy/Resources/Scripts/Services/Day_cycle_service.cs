@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Gradostroy;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -13,11 +15,15 @@ public class Day_cycle_service
 
     //Tuple<int, int> day_night_relationship; // 70 - day : 30 - night
     Canvas Night_Overlay;
-    int now_time = 6; // 6 - 24
+    int now_time = 7; // 6 - 24
     double Update_color_FPS;
     byte transparencyLevel = 0;
 
     public static Action<int> ATimeChanged;
+
+
+    public static int NumberNight = 0;
+
 
     public Day_cycle_service(double cycle_time, int Update_on_hour, Canvas Night_Overlay)
     {
@@ -35,6 +41,8 @@ public class Day_cycle_service
 
         this.Night_Overlay = Night_Overlay;
 
+
+        ATimeChanged?.Invoke(now_time);
 
     }
 
@@ -90,17 +98,39 @@ public class Day_cycle_service
         }
     }
 
+
+    // Need to create difficultService!!!!!!
+    private void ChangeDifficult()
+    {
+        var difNow = Game_main_timers_service.timers_ticks["Spawn_enemy_timer"];
+
+
+        if (difNow >= 0.3)
+        {
+            Game_main_timers_service.timers_ticks["Spawn_enemy_timer"] -= 0.2f;
+        }
+    }
+
     private void Hour_timer_actions(object sender, EventArgs e)
     {
         if (now_time == 24)
         {
             now_time = 0;
+            NumberNight++;
+            // Need to rename action to start night or day
             ActionsService.ActionStartSpawn?.Invoke();
+
+
+
+
         }
 
         if (now_time == 6)
         {
             ActionsService.ActionStopSpawn?.Invoke();
+            ChangeDifficult();
+
+            Service.main_timers.Spawn_enemy_timer.ChangeInterval(Game_main_timers_service.timers_ticks["Spawn_enemy_timer"]); // Need Create dificult service who changes value
         }
 
 

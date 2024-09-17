@@ -12,6 +12,12 @@ public class MyTimer
         main_timer.Tick += Timer_function;
     }
 
+
+    public void ChangeInterval(double interval)
+    {
+        main_timer.Interval = TimeSpan.FromSeconds(interval);
+    }
+
     public void Start()
     {
         main_timer.Start();

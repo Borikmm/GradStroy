@@ -105,7 +105,7 @@ public class Tower : Building
 
     public override Canvas Render(int x, int y, int width, int height, string Image_path = null)
     {
-        y -= 100;
+        y -= 130;
         x -= 50;
 
 

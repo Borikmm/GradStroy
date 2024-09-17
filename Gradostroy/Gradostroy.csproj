@@ -150,9 +150,6 @@
     <Resource Include="Resources\Sprites\Buttons\rol_up.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Windows\der.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Sprites\Buttons\full.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

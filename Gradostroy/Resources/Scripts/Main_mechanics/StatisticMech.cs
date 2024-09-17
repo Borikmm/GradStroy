@@ -8,12 +8,12 @@ namespace Gradostroy.Main_mechanics
     public class StatisticMech
     {
 
-        public static Action<Building, string> Achange_statistic;
+        public static Action<GameEntity, string> Achange_statistic;
 
-        Grid _grid_statistic { get; set; }
+        StackPanel _grid_statistic { get; set; }
         object _main_window;
 
-        public StatisticMech(Grid text_block_link, object win) 
+        public StatisticMech(StackPanel text_block_link, object win) 
         {
             _grid_statistic = text_block_link;
             this._main_window = win;
@@ -40,9 +40,9 @@ namespace Gradostroy.Main_mechanics
         }
 
 
-        private void Change_statistic(Building building, string action)
+        private void Change_statistic(GameEntity obj, string action)
         {
-            Blocks_service.AUpdateStatisticBlock?.Invoke(building, action);
+            Blocks_service.AUpdateStatisticBlock?.Invoke(obj, action);
         }
 
     }

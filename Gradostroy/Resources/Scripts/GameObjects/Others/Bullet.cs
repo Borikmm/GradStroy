@@ -92,9 +92,9 @@ public class Bullet : RenderElement, IGameLoop
     private void HandleCollision()
     {
 
-        if (_target is Enemy)
+        if (_target is Enemy enemy)
         {
-            ((Enemy)_target).GetDamage(_damage);
+            if (enemy._isAlife) enemy.GetDamage(_damage);
         }
 
         // Delete from canvas
