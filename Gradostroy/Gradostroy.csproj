@@ -62,6 +62,7 @@
     <Compile Include="Resources\Scripts\GameObjects\Enemys\Zombie.cs" />
     <Compile Include="Resources\Scripts\Enums\Enums.cs" />
     <Compile Include="Resources\Scripts\GameObjects\Others\Bullet.cs" />
+    <Compile Include="Resources\Scripts\GameObjects\Others\GameManager.cs" />
     <Compile Include="Resources\Scripts\Interfaces.cs" />
     <Compile Include="Resources\Scripts\Abstractions\Building.cs" />
     <Compile Include="Resources\Scripts\Abstractions\Enemy.cs" />

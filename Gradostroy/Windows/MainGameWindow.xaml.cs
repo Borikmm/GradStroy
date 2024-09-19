@@ -52,6 +52,8 @@ namespace Gradostroy.Windows
 
         public static Grid MainGrid;
 
+        private bool gmest = false;
+
         public MainGameWindow()
         {
             InitializeComponent();
@@ -147,14 +149,13 @@ namespace Gradostroy.Windows
                 case "Destroy":
                     if (building != null)
                     {
-                        ActionsService.ABuildDestroyed?.Invoke(((Building)((Canvas)building).Tag));
                         Destroy_canvas((Canvas)building);
                         try
                         {
                             Abuild_or_destroy?.Invoke(((Building)((Canvas)building).Tag).Sell_Cost);
                         }
                         catch { }
-                        costModificator -= 0.05f;
+
                     }
                     break;
                 case "info":
@@ -177,6 +178,16 @@ namespace Gradostroy.Windows
             {
                 case Building build:
                     Buildings_list.Remove(build.Name);
+                    costModificator -= 0.05f;
+
+                    switch (build)
+                    {
+                        case House house:
+                            ActionsService.ABuildDestroyed?.Invoke(house);
+                            break;
+                    }
+
+
                     break;
                 case Enemy enemy:
                     AEarn_money?.Invoke(-enemy.GoldEarned);
